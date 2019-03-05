@@ -1,0 +1,18 @@
+var spicedPg = require('spiced-pg');
+var db = spicedPg(
+  process.env.DATABASE_URL ||
+    'postgres:postgres:postgres@localhost:5432/wintergreen-socialnetwork',
+);
+
+module.exports.register = function register(
+  firstName,
+  lastName,
+  email,
+  password,
+) {
+  return db.query(
+    `INSERT INTO users (firstName, lastName, email, password)
+    VALUES ($1, $2, $3, $4)  RETURNING id, firstName, lastName`,
+    [firstName || null, lastName || null, email || null, password || null],
+  );
+};
