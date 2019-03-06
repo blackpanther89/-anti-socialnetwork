@@ -11,9 +11,6 @@ export default class Registration extends React.Component {
   }
   handleChange(e) {
     this[e.target.name] = e.target.value;
-    // this.setState({
-    //     [e.target.name]: e.target.value
-    // });
   }
   submit() {
     axios
@@ -46,6 +43,7 @@ export default class Registration extends React.Component {
           onChange={e => this.handleChange(e)}
         />
         <button type="submit" onClick={this.submit}> Register</button>
+        <Link to="/login">Click here to Log in!</Link>;
       </div>
     );
   }

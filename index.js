@@ -5,15 +5,9 @@ const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const bcrypt = require('./bcrypt');
 const db = require('./db');
-
+const csurf = require('csurf');
 //============================================================================//
 
-// app.use(csurf());
-//
-// app.use(function(req, res, next) {
-//   res.locals.csrfToken = req.csrfToken();
-//   next();
-// });
 app.use(bodyParser.json());
 app.use(
   cookieSession({
@@ -22,6 +16,12 @@ app.use(
   }),
 );
 
+app.use(csurf());
+
+app.use(function(req, res, next) {
+  res.cookie('mytoken', req.csrfToken());
+  next();
+});
 app.use(express.static('./public'));
 
 app.use(compression());
@@ -74,7 +74,29 @@ app.post('/registration', (req, res) => {
 
   // console.log('error:', error);
 });
-
+//============================================================================//
+app.post('/login', (req, res) => {
+  console.log('req.body', req.body);
+  db.login(req.body.email, req.body.password).then(results => {
+    bcrypt
+      .checkPassword(req.body.password, results.rows[0].password)
+      .then(match => {
+        if (match) {
+          req.session.userId = results.rows[0].id;
+          res.json({success: true});
+        } else {
+          res.json({error: true});
+        }
+      })
+      .catch(err => {
+        res.json({error: true});
+      })
+      .catch(err => {
+        res.json({error: true});
+      });
+  });
+});
+//============================================================================//
 app.listen(8080, function() {
   console.log("I'm listening.");
 });

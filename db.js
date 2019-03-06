@@ -16,3 +16,7 @@ module.exports.register = function register(
     [firstName || null, lastName || null, email || null, password || null],
   );
 };
+
+module.exports.login = function login(email) {
+  return db.query(`SELECT password FROM users WHERE email = $1`, [email]);
+};
