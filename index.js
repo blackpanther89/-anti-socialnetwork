@@ -2,9 +2,19 @@ const express = require('express');
 const app = express();
 const compression = require('compression');
 const cookieSession = require('cookie-session');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+const bcrypt = require('./bcrypt');
+const db = require('./db');
+
 //============================================================================//
 
+// app.use(csurf());
+//
+// app.use(function(req, res, next) {
+//   res.locals.csrfToken = req.csrfToken();
+//   next();
+// });
+app.use(bodyParser.json());
 app.use(
   cookieSession({
     secret: `I'm always angry.`,
@@ -29,7 +39,6 @@ if (process.env.NODE_ENV != 'production') {
 //============================================================================//
 
 app.get('/welcome', function(req, res) {
-  req.session.userId == true;
   if (req.session.userId) {
     res.redirect('/');
   } else {
@@ -39,6 +48,31 @@ app.get('/welcome', function(req, res) {
 
 app.get('*', function(req, res) {
   res.sendFile(__dirname + '/index.html');
+});
+//============================================================================//
+
+app.post('/registration', (req, res) => {
+  console.log('req.body:', req.body);
+  bcrypt.hashPassword(req.body.password).then(hash => {
+    // console.log('hash:', hash);
+    db
+      .register(req.body.firstName, req.body.lastName, req.body.email, hash)
+      .then(results => {
+        console.log('results in register', results);
+
+        req.session.firstName = req.body.firstName;
+        req.session.lastName = req.body.lastName;
+        req.session.email = req.body.email;
+        req.session.userId = results.rows[0].id;
+        // console.log(req.session);
+        res.json({success: true});
+      })
+      .catch(err => {
+        res.json({error: true});
+      });
+  });
+
+  // console.log('error:', error);
 });
 
 app.listen(8080, function() {

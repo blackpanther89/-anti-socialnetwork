@@ -11,12 +11,3 @@ if (location.pathname == '/welcome') {
 }
 
 ReactDOM.render(elem, document.querySelector('main'));
-
-//
-// ReactDOM.render(<Welcome />, document.querySelector('main'));
-//
-// function Welcome() {
-//   return <div>Welcome</div>;
-// }
-// we can return an empy string, object and an null
-//we do not use th wor class but className= "whatever"
