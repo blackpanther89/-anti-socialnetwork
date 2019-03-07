@@ -1,5 +1,130 @@
-img{
+* {
+    background-color: black;
+}
+
+img {
     width: 80px;
     height: 80px;
+}
 
+.login {
+    color: red;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+button {
+    /* color: red; */
+    text-align: center;
+    margin: auto;
+    display: block;
+    /* opacity: 0.6; */
+    background-color: #004A7F;
+    -webkit-border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 3px 5px;
+    text-decoration: none;
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+}
+
+@-webkit-keyframes glowing {
+    0% {
+        background-color: #B20000;
+        -webkit-box-shadow: 0 0 3px #B20000;
+    }
+
+    50% {
+        background-color: #FF0000;
+        -webkit-box-shadow: 0 0 40px #FF0000;
+    }
+
+    100% {
+        background-color: #B20000;
+        -webkit-box-shadow: 0 0 3px #B20000;
+    }
+}
+
+@-moz-keyframes glowing {
+    0% {
+        background-color: #B20000;
+        -moz-box-shadow: 0 0 3px #B20000;
+    }
+
+    50% {
+        background-color: #FF0000;
+        -moz-box-shadow: 0 0 40px #FF0000;
+    }
+
+    100% {
+        background-color: #B20000;
+        -moz-box-shadow: 0 0 3px #B20000;
+    }
+}
+
+@-o-keyframes glowing {
+    0% {
+        background-color: #B20000;
+        box-shadow: 0 0 3px #B20000;
+    }
+
+    50% {
+        background-color: #FF0000;
+        box-shadow: 0 0 40px #FF0000;
+    }
+
+    100% {
+        background-color: #B20000;
+        box-shadow: 0 0 3px #B20000;
+    }
+}
+
+@keyframes glowing {
+    0% {
+        background-color: #B20000;
+        box-shadow: 0 0 3px #B20000;
+    }
+
+    50% {
+        background-color: #FF0000;
+        box-shadow: 0 0 40px #FF0000;
+    }
+
+    100% {
+        background-color: #B20000;
+        box-shadow: 0 0 3px #B20000;
+    }
+}
+
+input {
+    color: red;
+    text-align: center;
+    margin: auto;
+    display: block;
+    opacity: 0.6;
+}
+
+h1 {
+    color: red;
+    text-align: center;
+}
+
+p {
+    color: red;
+    text-align: center;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin: auto;
+    display: block;
 }

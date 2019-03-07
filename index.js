@@ -94,13 +94,14 @@ app.post('/registration', (req, res) => {
 });
 //============================================================================//
 app.post('/login', (req, res) => {
-  // console.log('req.body', req.body);
-  db.login(req.body.email, req.body.password).then(results => {
+  console.log('req.body', req.body);
+  db.login(req.body.email).then(results => {
     bcrypt
       .checkPassword(req.body.password, results.rows[0].password)
       .then(match => {
         if (match) {
           req.session.userId = results.rows[0].id;
+          console.log(req.session.userId);
           res.json({success: true});
         } else {
           res.json({error: true});
@@ -116,22 +117,41 @@ app.post('/login', (req, res) => {
 });
 //===========================================================================//
 function requireLoggedInUser(req, res, next) {
+    console.log('req.session',req.session);
   if (!req.session.userId) {
     res.sendStatus(403);
   } else {
     next();
   }
 }
+//============================================================================//
 app.get('/user', requireLoggedInUser, (req, res) => {
+console.log('hello');
   db.getUserById(req.session.userId).then(({rows}) => {
-    console.log('rows in getUserById: ', rows);
+      console.log('rows in getUserById: ', rows);
     const user = rows.pop();
     if (!user.image_url) {
-      user.image_url = 'default.jpg';
+      user.image_url = './default.png';
     }
     console.log('results', results.rows);
     res.json(results.rows);
   });
+});
+//=================================================================
+app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
+    // console.log('req.file', req.file);
+    if (req.file) {
+        let imge_url = 'https://s3.amazonaws.com/spicedling/' +
+            req.file.filename;
+
+        db.userProfilePic( imge_url, req.session.userId).then(results => {
+            res.json(results.rows);
+        });
+    } else {
+        res.json({
+            success: false,
+        });
+    }
 });
 //============================================================================//
 app.get('*', function(req, res) {

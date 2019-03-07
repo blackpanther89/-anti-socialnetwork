@@ -25,10 +25,10 @@ export default class App extends React.Component {
     axios.get('/user', ({data}) => {
       //id, fisrt, last,
       this.setState({
-        firstName: '',
-        lastName: '',
-        profilePicUrl: '',
-        userId: '',
+        firstName: data.data.firstName,
+        lastName: data.datA.lastName,
+        image_url: data.data.image_url,
+        id: data.data.id,
       });
     });
   }
@@ -43,7 +43,7 @@ export default class App extends React.Component {
     }
     return (
       <div>
-        <img src="./logo.jpg" alt="Social networ logo" />
+        <img src="./logo.jpg" alt="Social network logo" />
         <ProfilePic
           image={this.state.image}
           firstName={this.state.firstName}

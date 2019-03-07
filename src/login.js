@@ -31,12 +31,15 @@ export default class Login extends React.Component {
     return (
       <div>
         {this.state.error && <div className="error">Oops!</div>}
+            <br />
         <input name="email" onChange={e => this.handleChange(e)} />
+            <br />
         <input
           name="password"
           type="password"
           onChange={e => this.handleChange(e)}
         />
+            <br />
         <button type="submit" onClick={this.submit}> Log in</button>
       </div>
     );
