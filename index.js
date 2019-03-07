@@ -6,8 +6,29 @@ const bodyParser = require('body-parser');
 const bcrypt = require('./bcrypt');
 const db = require('./db');
 const csurf = require('csurf');
+const s3 = require('./s3');
+var multer = require('multer');
+var uidSafe = require('uid-safe');
+var path = require('path');
 //============================================================================//
+var diskStorage = multer.diskStorage({
+  destination: function(req, file, callback) {
+    callback(null, __dirname + '/uploads');
+  },
+  filename: function(req, file, callback) {
+    uidSafe(24).then(function(uid) {
+      callback(null, uid + path.extname(file.originalname));
+    });
+  },
+});
 
+var uploader = multer({
+  storage: diskStorage,
+  limits: {
+    fileSize: 2097152,
+  },
+});
+//============================================================================//
 app.use(bodyParser.json());
 app.use(
   cookieSession({
@@ -46,9 +67,6 @@ app.get('/welcome', function(req, res) {
   }
 });
 
-app.get('*', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
 //============================================================================//
 
 app.post('/registration', (req, res) => {
@@ -76,7 +94,7 @@ app.post('/registration', (req, res) => {
 });
 //============================================================================//
 app.post('/login', (req, res) => {
-  console.log('req.body', req.body);
+  // console.log('req.body', req.body);
   db.login(req.body.email, req.body.password).then(results => {
     bcrypt
       .checkPassword(req.body.password, results.rows[0].password)
@@ -95,6 +113,29 @@ app.post('/login', (req, res) => {
         res.json({error: true});
       });
   });
+});
+//===========================================================================//
+function requireLoggedInUser(req, res, next) {
+  if (!req.session.userId) {
+    res.sendStatus(403);
+  } else {
+    next();
+  }
+}
+app.get('/user', requireLoggedInUser, (req, res) => {
+  db.getUserById(req.session.userId).then(({rows}) => {
+    console.log('rows in getUserById: ', rows);
+    const user = rows.pop();
+    if (!user.image_url) {
+      user.image_url = 'default.jpg';
+    }
+    console.log('results', results.rows);
+    res.json(results.rows);
+  });
+});
+//============================================================================//
+app.get('*', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
 //============================================================================//
 app.listen(8080, function() {

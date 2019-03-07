@@ -20,3 +20,21 @@ module.exports.register = function register(
 module.exports.login = function login(email) {
   return db.query(`SELECT password FROM users WHERE email = $1`, [email]);
 };
+module.exports.getUserById = function getUserById(id) {
+  return db.query(
+    `SELECT id, firstName, lastName, profilePicUrl FROM users WHERE id = $1`,
+    [id],
+  );
+};
+module.exports.userProfilePic = function userProfilePic(
+  firstName,
+  lastName,
+  email,
+  password,
+  profilePicUrl,
+) {
+  return deb.query(
+    `UPDATE users SET firstName = $1, lastName = $2, email = $3, password = $4 WHERE profilepic =$5 `,
+    [firstName, lastName, email, password, profilePicUrl],
+  );
+};
