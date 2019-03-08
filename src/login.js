@@ -40,6 +40,7 @@ export default class Login extends React.Component {
           onChange={e => this.handleChange(e)}
         />
             <br />
+                <br />
         <button type="submit" onClick={this.submit}> Log in</button>
       </div>
     );

@@ -95,7 +95,9 @@ app.post('/registration', (req, res) => {
 //============================================================================//
 app.post('/login', (req, res) => {
   console.log('req.body', req.body);
+
   db.login(req.body.email).then(results => {
+      console.log('results in log in', results );
     bcrypt
       .checkPassword(req.body.password, results.rows[0].password)
       .then(match => {
@@ -127,32 +129,34 @@ function requireLoggedInUser(req, res, next) {
 //============================================================================//
 app.get('/user', requireLoggedInUser, (req, res) => {
 console.log('hello');
-  db.getUserById(req.session.userId).then(({rows}) => {
-      console.log('rows in getUserById: ', rows);
-    const user = rows.pop();
+  db.getUserById(req.session.userId).then(data => {
+      console.log('rows in getUserById: ', data);
+
+    const user = data.rows.pop();
+    console.log("user", user);
     if (!user.image_url) {
       user.image_url = './default.png';
     }
-    console.log('results', results.rows);
-    res.json(results.rows);
+    console.log('results', data.rows);
+    res.json(user);
   });
 });
 //=================================================================
-app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
-    // console.log('req.file', req.file);
-    if (req.file) {
-        let imge_url = 'https://s3.amazonaws.com/spicedling/' +
-            req.file.filename;
-
-        db.userProfilePic( imge_url, req.session.userId).then(results => {
-            res.json(results.rows);
-        });
-    } else {
-        res.json({
-            success: false,
-        });
-    }
-});
+// app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
+//     // console.log('req.file', req.file);
+//     if (req.file) {
+//         let imge_url = 'https://s3.amazonaws.com/spicedling/' +
+//             req.file.filename;
+//
+//         db.userProfilePic( imge_url, req.session.userId).then(results => {
+//             res.json(results.rows);
+//         });
+//     } else {
+//         res.json({
+//             success: false,
+//         });
+//     }
+// });
 //============================================================================//
 app.get('*', function(req, res) {
   res.sendFile(__dirname + '/index.html');

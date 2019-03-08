@@ -23,7 +23,7 @@ module.exports.login = function login(email) {
 
 module.exports.getUserById = function getUserById(id) {
     return db.query(
-        `SELECT image_url, firstName, lastName FROM users WHERE id = $1`,
+        `SELECT image_url, firstName, lastName, id FROM users WHERE id = $1`,
         [id],
     );
 };

@@ -22,21 +22,20 @@ export default class App extends React.Component {
   }
   componentDidMount() {
     //get data to show like in view
-    axios.get('/user', ({data}) => {
+    console.log('componentDidMount');
+    axios.get('/user').then(data=> {
+
       //id, fisrt, last,
+      console.log('data', data);
       this.setState({
-        firstName: data.data.firstName,
-        lastName: data.datA.lastName,
+        firstName: data.data.firstname,
+        lastName: data.data.lastname,
         image_url: data.data.image_url,
         id: data.data.id,
       });
     });
   }
-  render() {
-    if (!this.state.id) {
-      return null;
-    }
-  }
+
   render() {
     if (!this.state.id) {
       return null;
