@@ -17,11 +17,14 @@ export default class App extends React.Component {
       uploaderIsVisible: true,
     };
   }
-  setImage(image) {
-    this.setState({image});
+  // setImage(image) {
+  //   this.setState({image});
+  // }
+  setBio(bio){
+      this.setState({bio})
   }
   componentDidMount() {
-    //get data to show like in view
+
     console.log('componentDidMount');
     axios.get('/user').then(data=> {
 
@@ -30,7 +33,7 @@ export default class App extends React.Component {
       this.setState({
         firstName: data.data.firstname,
         lastName: data.data.lastname,
-        image_url: data.data.image_url,
+        image: data.data.image_url,
         id: data.data.id,
       });
     });
@@ -47,7 +50,7 @@ export default class App extends React.Component {
           image={this.state.image}
           firstName={this.state.firstName}
           lastName={this.state.lastName}
-          showUploader={this.showUploader}
+          onClick={this.showUploader}
         />
         {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
 

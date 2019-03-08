@@ -141,22 +141,22 @@ console.log('hello');
     res.json(user);
   });
 });
-//=================================================================
-// app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
-//     // console.log('req.file', req.file);
-//     if (req.file) {
-//         let imge_url = 'https://s3.amazonaws.com/spicedling/' +
-//             req.file.filename;
-//
-//         db.userProfilePic( imge_url, req.session.userId).then(results => {
-//             res.json(results.rows);
-//         });
-//     } else {
-//         res.json({
-//             success: false,
-//         });
-//     }
-// });
+//============================================================================//
+app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
+    // console.log('req.file', req.file);
+    if (req.file) {
+        let imge_url = 'https://s3.amazonaws.com/spicedling/' +
+            req.file.filename;
+
+        db.userProfilePic( imge_url, req.session.userId).then(results => {
+            res.json(results.rows);
+        });
+    } else {
+        res.json({
+            success: false,
+        });
+    }
+});
 //============================================================================//
 app.get('*', function(req, res) {
   res.sendFile(__dirname + '/index.html');
