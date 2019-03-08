@@ -13,9 +13,9 @@ export default class Welcome extends React.Component {
   render() {
     return (
       <div id="welcome">
-        <img src="./logo.jpg" />
-        <h1>Welcome Ⓐmigo!</h1>
-        <p>Welcome to the jungle ⚑</p>
+        <img src="./logo.jpeg" />
+        <h1>Welcome</h1>
+        <p>All power to the people!</p>
         <HashRouter>
           <div>
             <Route exact path="/" component={Registration} />

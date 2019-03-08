@@ -9,7 +9,7 @@ img {
 }
 
 .login {
-    color: red;
+    color: white;
     text-align: center;
     margin: auto;
     display: block;
@@ -105,14 +105,31 @@ button {
         box-shadow: 0 0 3px #B20000;
     }
 }
-#welcome{
-    border: 1px solid red;
 
+#welcome {
+    border: 1px solid white;
 }
 
+.pic {
+
+    border: solid white;
+    text-align: center;
+    margin: auto;
+    display: block;
+    width: 500px;
+    opacity:0.6;
+}
+
+.default {
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
 
 input {
-    color: red;
+    color: white;
     text-align: center;
     margin: auto;
     display: block;
@@ -120,12 +137,12 @@ input {
 }
 
 h1 {
-    color: red;
+    color: white;
     text-align: center;
 }
 
 p {
-    color: red;
+    color: white;
     text-align: center;
 }
 

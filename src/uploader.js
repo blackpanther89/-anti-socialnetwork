@@ -9,14 +9,16 @@ export default class Uploader extends React.Component  {
     }
     render() {
       return (
-          <div>
+          <div className="pic">
           <form>
-          <label htmlFor="file">Upload</label>
+          <label htmlFor="file">Browse</label>
           <input type='file'id='file' onChange={e=>{
               const fd = new FormData
               fd.append('file', e.target.files[0])
               axios.post('/upload', fd)
          }}/>
+         <br/>
+         <br/>
          <button> Upload Picture </button>
          </form>
          </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from './axios';
 import ProfilePic from './profilepic';
 import Uploader from './uploader';
+import Profile from './profile'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -44,8 +45,9 @@ export default class App extends React.Component {
       return null;
     }
     return (
+      <div className="all">
       <div>
-        <img src="./logo.jpg" alt="Social network logo" />
+        <img src="./logo.jpeg" alt="Social network logo" />
         <ProfilePic
           image={this.state.image}
           firstName={this.state.firstName}
@@ -53,8 +55,22 @@ export default class App extends React.Component {
           showUploader={this.showUploader}
         />
         {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
+</div>
 
+<div>
+<Profile
+    id={this.state.id}
+    firstName={this.state.firstName}
+    lastName={this.state.lastName}
+    image={this.state.image}
+    showUploader={this.showUploader}
+    bio={this.state.bio}
+    setBio={this.setBio}
+/>
+</div>
       </div>
+
+
     );
   }
 }
