@@ -2,7 +2,7 @@ import React from 'react';
 import axios from './axios';
 
 export default function ProfilePic (
-  {first, last, onClick, image = './default.png'},
+  {firstName, lastName, showUploader, image = './default.png'},
 ) {
-  return <img src={image} alt={`${first} ${last}`} onClick={onClick} />;
+  return <img src={image} alt={`${firstName} ${lastName}`} onClick={showUploader} />;
 }

@@ -145,10 +145,10 @@ console.log('hello');
 app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
     // console.log('req.file', req.file);
     if (req.file) {
-        let imge_url = 'https://s3.amazonaws.com/spicedling/' +
+        let image_url = 'https://s3.amazonaws.com/spicedling/' +
             req.file.filename;
 
-        db.userProfilePic( imge_url, req.session.userId).then(results => {
+        db.userProfilePic( image_url, req.session.userId).then(results => {
             res.json(results.rows);
         });
     } else {

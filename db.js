@@ -30,7 +30,7 @@ module.exports.getUserById = function getUserById(id) {
 module.exports.userProfilePic = function userProfilePic(
     id, image_url,
 ) {
-    return deb.query(
+    return db.query(
         `UPDATE users SET image_url= $1 WHERE id =$2 `,
         [id, image_url],
     );

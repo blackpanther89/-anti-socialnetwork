@@ -5,13 +5,13 @@ export default class Uploader extends React.Component  {
   constructor(props) {
         super(props);
         this.state = {};
-        // this.uploadFile = this.uploadFile.bind(this);
+
     }
     render() {
       return (
           <div>
-          <form
-          <label htmlFor="file">Browse</label>
+          <form>
+          <label htmlFor="file">Upload</label>
           <input type='file'id='file' onChange={e=>{
               const fd = new FormData
               fd.append('file', e.target.files[0])

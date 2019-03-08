@@ -12,14 +12,14 @@ export default class App extends React.Component {
     this.showUploader = this.showUploader.bind(this);
     this.setImage = this.setImage.bind(this);
   }
-  showUploader() {
-    this.state = {
-      uploaderIsVisible: true,
-    };
+  showUploader(e) {
+      e.preventDefault()
+      console.log('i am showUploader');
+    this.setState({ uploaderIsVisible: true})
   }
-  // setImage(image) {
-  //   this.setState({image});
-  // }
+  setImage(image) {
+    this.setState({image});
+  }
   setBio(bio){
       this.setState({bio})
   }
@@ -34,7 +34,7 @@ export default class App extends React.Component {
         firstName: data.data.firstname,
         lastName: data.data.lastname,
         image: data.data.image_url,
-        id: data.data.id,
+        id: data.data.id
       });
     });
   }
@@ -50,7 +50,7 @@ export default class App extends React.Component {
           image={this.state.image}
           firstName={this.state.firstName}
           lastName={this.state.lastName}
-          onClick={this.showUploader}
+          showUploader={this.showUploader}
         />
         {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
 
