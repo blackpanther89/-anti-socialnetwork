@@ -66,19 +66,20 @@ export default class App extends React.Component {
            />
 
            </div>
-            <Profile
+           <Profile
 
-            id={this.state.id}
-            firstName={this.state.firstName}
-            lastName={this.state.lastName}
-            image={this.state.image}
-            showUploader={this.showUploader}
-            bio={this.state.bio}
-            setBio={this.setBio}
-            />
-            // {this.state.BioEditorIsVisible && <Profile  setBio={ this.setBio} />}
-            {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
-            </div>
+           id={this.state.id}
+           firstName={this.state.firstName}
+           lastName={this.state.lastName}
+           image={this.state.image}
+           showUploader={this.showUploader}
+           bio={this.state.bio}
+           setBio={this.setBio}
+           />
+           {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
+           </div>
+
+
 
 
 

@@ -8,13 +8,14 @@ export default class BioEditor extends React.Component {
     this.state = {}
 
     }
+    handleChange(e) {
+      this[e.target.name] = e.target.value;
+    }
     render() {
         return(
             <div className="bio">
-          <BioEditor
-          bio={this.props.bio}
-          setBio={this.props.setBio}
-          />
+    <textarea rows="4" cols="50" onChange={e => this.handleChange(e)}
+    />
           </div>
 
 
