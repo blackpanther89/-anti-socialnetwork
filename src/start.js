@@ -5,10 +5,12 @@ import App from './app';
 
 let elem;
 
+console.log(App);
+
 if (location.pathname == '/welcome') {
-  elem = <Welcome />;
+  elem = <Welcome />
 } else {
-  elem = <App />;
+  elem = <App />
 }
 
 ReactDOM.render(elem, document.querySelector('main'));

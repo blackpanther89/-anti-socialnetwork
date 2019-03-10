@@ -11,7 +11,7 @@ export default class Uploader extends React.Component  {
       return (
           <div className="pic">
           <form>
-          <label htmlFor="file">Browse</label>
+          <label htmlFor="file">Upload</label>
           <input type='file'id='file' onChange={e=>{
               const fd = new FormData
               fd.append('file', e.target.files[0])

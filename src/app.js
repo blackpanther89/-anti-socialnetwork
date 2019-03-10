@@ -12,6 +12,8 @@ export default class App extends React.Component {
     };
     this.showUploader = this.showUploader.bind(this);
     this.setImage = this.setImage.bind(this);
+    this.showBioEditor=this.showBioEditor.bind(this)
+    this.setBio= this.setBio.bind(this)
   }
   showUploader(e) {
       e.preventDefault()
@@ -19,10 +21,14 @@ export default class App extends React.Component {
     this.setState({ uploaderIsVisible: true})
   }
   setImage(image) {
-    this.setState({image});
+    this.setState({ image, uploaderIsVisible: false});
+  }
+  showBioEditor(){
+      this.setState({ BioEditorIsVisible: true})
+
   }
   setBio(bio){
-      this.setState({bio})
+      this.setState({bio, uploaderIsVisible: false})
   }
   componentDidMount() {
 
@@ -41,36 +47,42 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (!this.state.id) {
-      return null;
-    }
+
+  if (!this.state.id) {
+   return null;
+}
+
     return (
-      <div className="all">
-      <div>
-        <img src="./logo.jpeg" alt="Social network logo" />
-        <ProfilePic
-          image={this.state.image}
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          showUploader={this.showUploader}
-        />
-        {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
-</div>
-
 <div>
-<Profile
-    id={this.state.id}
-    firstName={this.state.firstName}
-    lastName={this.state.lastName}
-    image={this.state.image}
-    showUploader={this.showUploader}
-    bio={this.state.bio}
-    setBio={this.setBio}
-/>
-</div>
-      </div>
+<div className="fr">
+         <img src="./logo.jpeg" alt="Social network logo" />
+
+           <ProfilePic
+            id={this.state.id}
+             image={this.state.image}
+             firstName={this.state.firstName}
+             lastName={this.state.lastName}
+             showUploader={this.showUploader}
+           />
+
+           </div>
+            <Profile
+
+            id={this.state.id}
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            image={this.state.image}
+            showUploader={this.showUploader}
+            bio={this.state.bio}
+            setBio={this.setBio}
+            />
+            // {this.state.BioEditorIsVisible && <Profile  setBio={ this.setBio} />}
+            {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
+            </div>
 
 
-    );
+
+
+    )
   }
 }
