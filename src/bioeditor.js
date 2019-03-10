@@ -15,7 +15,8 @@ export default class BioEditor extends React.Component {
         return(
             <div className="bio">
     <textarea rows="4" cols="50" onChange={e => this.handleChange(e)}
-    />
+
+    />     <button> Submit </button>
           </div>
 
 

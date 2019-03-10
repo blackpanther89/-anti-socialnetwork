@@ -17,20 +17,20 @@ export default class Profile extends React.Component {
             <h1> hello {this.props.firstName} {this.props.lastName}
             </h1>
 
-            <ProfilePic
-            image={this.props.image}
-            // firstName={this.props.firstName}
-            // lastName={this.props.lastName}
-
-        showUploader={this.props.showUploader}
-
-          />
-          <BioEditor
-          bio={this.props.bio}
-          setBio={this.props.setBio}
-          // showBioEditor={this.props.showBioEditor}
-          />
-          </div>
+            <BioEditor
+            bio={this.props.bio}
+            setBio={this.props.setBio}
+            // showBioEditor={this.props.showBioEditor}
+            />
+            </div>
+        //     <ProfilePic
+        //     image={this.props.image}
+        //     // firstName={this.props.firstName}
+        //     // lastName={this.props.lastName}
+        //
+        // showUploader={this.props.showUploader}
+        //
+        //   />
 
 
 
