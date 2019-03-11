@@ -12,134 +12,134 @@ var uidSafe = require('uid-safe');
 var path = require('path');
 //============================================================================//
 var diskStorage = multer.diskStorage({
-  destination: function(req, file, callback) {
-    callback(null, __dirname + '/uploads');
-  },
-  filename: function(req, file, callback) {
-    uidSafe(24).then(function(uid) {
-      callback(null, uid + path.extname(file.originalname));
-    });
-  },
+    destination: function(req, file, callback) {
+        callback(null, __dirname + '/uploads');
+    },
+    filename: function(req, file, callback) {
+        uidSafe(24).then(function(uid) {
+            callback(null, uid + path.extname(file.originalname));
+        });
+    },
 });
 
 var uploader = multer({
-  storage: diskStorage,
-  limits: {
-    fileSize: 2097152,
-  },
+    storage: diskStorage,
+    limits: {
+        fileSize: 2097152,
+    },
 });
 //============================================================================//
 app.use(bodyParser.json());
 app.use(
-  cookieSession({
-    secret: `I'm always angry.`,
-    maxAge: 1000 * 60 * 60 * 24 * 14,
-  }),
+    cookieSession({
+        secret: `I'm always angry.`,
+        maxAge: 1000 * 60 * 60 * 24 * 14,
+    }),
 );
 
 app.use(csurf());
 
 app.use(function(req, res, next) {
-  res.cookie('mytoken', req.csrfToken());
-  next();
+    res.cookie('mytoken', req.csrfToken());
+    next();
 });
 app.use(express.static('./public'));
 
 app.use(compression());
 
 if (process.env.NODE_ENV != 'production') {
-  app.use(
-    '/bundle.js',
-    require('http-proxy-middleware')({
-      target: 'http://localhost:8081/',
-    }),
-  );
+    app.use(
+        '/bundle.js',
+        require('http-proxy-middleware')({
+            target: 'http://localhost:8081/',
+        }),
+    );
 } else {
-  app.use('/bundle.js', (req, res) => res.sendFile(`${__dirname}/bundle.js`));
+    app.use('/bundle.js', (req, res) => res.sendFile(`${__dirname}/bundle.js`));
 }
 //============================================================================//
 
 app.get('/welcome', function(req, res) {
-  if (req.session.userId) {
-    res.redirect('/');
-  } else {
-    res.sendFile(__dirname + '/index.html');
-  }
+    if (req.session.userId) {
+        res.redirect('/');
+    } else {
+        res.sendFile(__dirname + '/index.html');
+    }
 });
 
 //============================================================================//
 
 app.post('/registration', (req, res) => {
-  console.log('req.body:', req.body);
-  bcrypt.hashPassword(req.body.password).then(hash => {
+    console.log('req.body:', req.body);
+    bcrypt.hashPassword(req.body.password).then(hash => {
     // console.log('hash:', hash);
-    db
-      .register(req.body.firstName, req.body.lastName, req.body.email, hash)
-      .then(results => {
-        console.log('results in register', results);
+        db
+            .register(req.body.firstName, req.body.lastName, req.body.email, hash)
+            .then(results => {
+                console.log('results in register', results);
 
-        req.session.firstName = req.body.firstName;
-        req.session.lastName = req.body.lastName;
-        req.session.email = req.body.email;
-        req.session.userId = results.rows[0].id;
-        // console.log(req.session);
-        res.json({success: true});
-      })
-      .catch(err => {
-        res.json({error: true});
-      });
-  });
+                req.session.firstName = req.body.firstName;
+                req.session.lastName = req.body.lastName;
+                req.session.email = req.body.email;
+                req.session.userId = results.rows[0].id;
+                // console.log(req.session);
+                res.json({success: true});
+            })
+            .catch(err => {
+                res.json({error: true});
+            });
+    });
 
-  // console.log('error:', error);
+    // console.log('error:', error);
 });
 //============================================================================//
 app.post('/login', (req, res) => {
-  console.log('req.body', req.body);
+    console.log('req.body', req.body);
 
-  db.login(req.body.email).then(results => {
-      console.log('results in log in', results );
-    bcrypt
-      .checkPassword(req.body.password, results.rows[0].password)
-      .then(match => {
-        if (match) {
-          req.session.userId = results.rows[0].id;
-          console.log(req.session.userId);
-          res.json({success: true});
-        } else {
-          res.json({error: true});
-        }
-      })
-      .catch(err => {
-        res.json({error: true});
-      })
-      .catch(err => {
-        res.json({error: true});
-      });
-  });
+    db.login(req.body.email).then(results => {
+        console.log('results in log in', results );
+        bcrypt
+            .checkPassword(req.body.password, results.rows[0].password)
+            .then(match => {
+                if (match) {
+                    req.session.userId = results.rows[0].id;
+                    console.log(req.session.userId);
+                    res.json({success: true});
+                } else {
+                    res.json({error: true});
+                }
+            })
+            .catch(err => {
+                res.json({error: true});
+            })
+            .catch(err => {
+                res.json({error: true});
+            });
+    });
 });
 //===========================================================================//
 function requireLoggedInUser(req, res, next) {
     console.log('req.session',req.session);
-  if (!req.session.userId) {
-    res.sendStatus(403);
-  } else {
-    next();
-  }
+    if (!req.session.userId) {
+        res.sendStatus(403);
+    } else {
+        next();
+    }
 }
 //============================================================================//
 app.get('/user', requireLoggedInUser, (req, res) => {
-console.log('hello');
-  db.getUserById(req.session.userId).then(data => {
-      console.log('rows in getUserById: ', data);
+    console.log('hello');
+    db.getUserById(req.session.userId).then(data => {
+        console.log('rows in getUserById: ', data);
 
-    const user = data.rows.pop();
-    console.log("user", user);
-    if (!user.image_url) {
-      user.image_url = './default.png';
-    }
-    console.log('results', data.rows);
-    res.json(user);
-  });
+        const user = data.rows.pop();
+        console.log("user", user);
+        if (!user.image_url) {
+            user.image_url = './default.png';
+        }
+        console.log('results', data.rows);
+        res.json(user);
+    });
 });
 //============================================================================//
 app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
@@ -159,27 +159,25 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 });
 //============================================================================//
 app.get('/bio', (req, res) => {
-    db.setBio(req.session.userId).then(results=>{
-    console.log('results', results);
-        res.json(results)
+    db.getBioById(req.session.userId).then(results=>{
+        console.log('results in setBio', results);
+        res.json(results);
     }).catch(err => {
-      res.json({error: true});
-    })
-})
- app.post('/bio',(req, res)=> {
-
-     db.setBio( req.session.userId).then(results=>{
-             console.log('results', results);
-         res.json(results)
-     }).catch(err => {
-       res.json({error: true});
-     })
- })
+        res.json({error: true});
+    });
+});
+app.post('/bio',(req, res)=> {
+    console.log('req.body', req.body);
+    db.setBio( req.body.bio,req.session.userId).then(results=>{
+        console.log('results', results);
+        res.json(results);
+    });
+});
 //============================================================================//
 app.get('*', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 //============================================================================//
 app.listen(8080, function() {
-  console.log("I'm listening.");
+    console.log("I'm listening.");
 });

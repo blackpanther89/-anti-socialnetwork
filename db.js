@@ -23,7 +23,7 @@ module.exports.login = function login(email) {
 
 module.exports.getUserById = function getUserById(id) {
     return db.query(
-        `SELECT image_url, firstName, lastName, id FROM users WHERE id = $1`,
+        `SELECT image_url, firstName, lastName, bio, id FROM users WHERE id = $1`,
         [id],
     );
 };
@@ -35,6 +35,9 @@ module.exports.userProfilePic = function userProfilePic(
         [id, image_url],
     );
 };
-module.exports.setBio = function setBio( text, id ){
-    return db.query( `UPDATE users SET bio= $2 WHERE id =$1 RETURNING bio` , [text, id])
-}
+module.exports.getBioById = function getBioById( id ){
+    return db.query( `SELECT bio FROM users WHERE id =$1` , [id]);
+};
+module.exports.setBio = function setBio( bio, id ){
+    return db.query( `UPDATE users SET bio= $1 WHERE id =$2 RETURNING bio` , [bio, id]);
+};

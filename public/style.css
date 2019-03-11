@@ -1,8 +1,8 @@
 * {
-    background-color: black;
+    background-color: white;
 }
 h1{
-    color: white;
+    color: black;
 }
 img {
     width: 80px;
@@ -11,7 +11,7 @@ img {
 }
 
 .login {
-    color: white;
+    color: black;
     text-align: center;
     margin: auto;
     display: block;
@@ -109,12 +109,12 @@ button {
 }
 
 #welcome {
-    border: 1px solid white;
+    border: 1px solid black;
 }
 
 .pic {
 
-    border: solid white;
+    border: solid black;
     text-align: center;
     margin: auto;
     display: block;
@@ -131,7 +131,7 @@ button {
 }
 
 input {
-    color: white;
+    color: black;
     text-align: center;
     margin: auto;
     display: block;
@@ -139,12 +139,12 @@ input {
 }
 
 h1 {
-    color: white;
+    color: black;
     text-align: center;
 }
 
 p {
-    color: white;
+    color: black;
     text-align: center;
 }
 

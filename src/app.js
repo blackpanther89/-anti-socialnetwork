@@ -2,85 +2,91 @@ import React from 'react';
 import axios from './axios';
 import ProfilePic from './profilepic';
 import Uploader from './uploader';
-import Profile from './profile'
+import Profile from './profile';
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      uploaderIsVisibl: false,
-    };
-    this.showUploader = this.showUploader.bind(this);
-    this.setImage = this.setImage.bind(this);
-    this.showBioEditor=this.showBioEditor.bind(this)
-    this.setBio= this.setBio.bind(this)
-  }
-  showUploader(e) {
-      e.preventDefault()
-      console.log('i am showUploader');
-    this.setState({ uploaderIsVisible: true})
-  }
-  setImage(image) {
-    this.setState({ image: image});
-  }
-  showBioEditor(){
-      this.setState({ BioEditorIsVisible: true})
+    constructor(props) {
+        super(props);
+        this.state = {
+            uploaderIsVisibl: false,
+        };
+        this.showUploader = this.showUploader.bind(this);
+        this.setImage = this.setImage.bind(this);
+        this.showBioEditor=this.showBioEditor.bind(this);
+        this.setBio= this.setBio.bind(this);
+    }
+    showUploader(e) {
+        e.preventDefault();
+        console.log('i am showUploader');
+        this.setState({ uploaderIsVisible: true});
+    }
+    setImage(image) {
+        this.setState({ image: image});
+    }
+    showBioEditor(){
+        this.setState({ BioEditorIsVisible: true});
 
-  }
-  setBio(bio){
-      this.setState({bio: bio})
-  }
-  componentDidMount() {
+    }
+    setBio(bio){
+        console.log('setBio in app.js',bio);
+        this.setState({bio:bio});
+    }
+    componentDidMount() {
 
-    console.log('componentDidMount');
-    axios.get('/user').then(data=> {
+        console.log('componentDidMount');
+        axios.get('/user').then(data=> {
 
-      //id, fisrt, last,
-      console.log('data', data);
-      this.setState({
-        firstName: data.data.firstname,
-        lastName: data.data.lastname,
-        image: data.data.image_url,
-        id: data.data.id
-      });
-    });
-    axios.get('/bio').then(data=>{
-        this.setState({
-        bio: data.data.bio
-    })
-    })
-  }
+            //id, fisrt, last,
+            console.log('data', data);
+            this.setState({
+                firstName: data.data.firstname,
+                lastName: data.data.lastname,
+                image: data.data.image_url,
+                id: data.data.id,
+                bio: data.data.bio
 
-  render() {
+            },()=>{
+                console.log('this.state', this.state);
+            });
+        });
+        axios.get('/bio').then(data=>{
+            this.setState({
+                bio: data.data.bio
+            });
+        });
+    }
 
-  if (!this.state.id) {
-   return null;
-}
+    render() {
 
-    return (
-<div>
-<div className="fr">
-         <img src="./logo.jpeg" alt="Social network logo" />
+        if (!this.state.id) {
+            return null;
+        }
 
-           </div>
-           <Profile
-
-           id={this.state.id}
-           firstName={this.state.firstName}
-           lastName={this.state.lastName}
-           image={this.state.image}
-           showUploader={this.showUploader}
-           bio={this.state.bio}
-           setBio={this.setBio}
-           />
-           {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
-           </div>
+        return (
+            <div>
+                <div className="fr">
+                    <img src="./logo.jpeg" alt="Social network logo" />
 
 
+                </div>
+                <Profile
+
+                    id={this.state.id}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    image={this.state.image}
+                    showUploader={this.showUploader}
+                    bio={this.state.bio}
+                    setBio={this.setBio}
+                />
+                {this.state.uploaderIsVisible && <Uploader setImage={this.setImage} />}
+            </div>
 
 
 
 
-    )
-  }
+
+
+        );
+    }
 }
