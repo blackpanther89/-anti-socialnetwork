@@ -8,7 +8,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uploaderIsVisible: false,
+      uploaderIsVisibl: false,
     };
     this.showUploader = this.showUploader.bind(this);
     this.setImage = this.setImage.bind(this);
@@ -21,14 +21,14 @@ export default class App extends React.Component {
     this.setState({ uploaderIsVisible: true})
   }
   setImage(image) {
-    this.setState({ image, uploaderIsVisible: false});
+    this.setState({ image: image});
   }
   showBioEditor(){
       this.setState({ BioEditorIsVisible: true})
 
   }
   setBio(bio){
-      this.setState({bio, uploaderIsVisible: false})
+      this.setState({bio: bio})
   }
   componentDidMount() {
 
@@ -44,6 +44,11 @@ export default class App extends React.Component {
         id: data.data.id
       });
     });
+    axios.get('/bio').then(data=>{
+        this.setState({
+        bio: data.data.bio
+    })
+    })
   }
 
   render() {
@@ -56,14 +61,6 @@ export default class App extends React.Component {
 <div>
 <div className="fr">
          <img src="./logo.jpeg" alt="Social network logo" />
-
-           <ProfilePic
-            id={this.state.id}
-             image={this.state.image}
-             firstName={this.state.firstName}
-             lastName={this.state.lastName}
-             showUploader={this.showUploader}
-           />
 
            </div>
            <Profile

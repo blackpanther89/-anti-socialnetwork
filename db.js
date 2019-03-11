@@ -36,5 +36,5 @@ module.exports.userProfilePic = function userProfilePic(
     );
 };
 module.exports.setBio = function setBio( text, id ){
-    return db.query( `UPDATE users SET bio= $1 WHERE id =$2`, [text, id])
+    return db.query( `UPDATE users SET bio= $2 WHERE id =$1 RETURNING bio` , [text, id])
 }

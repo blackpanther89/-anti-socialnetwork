@@ -14,7 +14,15 @@ export default class Profile extends React.Component {
     render() {
         return(
             <div className="profile">
-            <h1> hello {this.props.firstName} {this.props.lastName}
+            <ProfilePic
+            image={this.props.image}
+            // firstName={this.props.firstName}
+            // lastName={this.props.lastName}
+
+            showUploader={this.props.showUploader}
+
+            />
+            <h1>  Name: {this.props.firstName}  Last Name: {this.props.lastName}
             </h1>
 
             <BioEditor
@@ -23,14 +31,6 @@ export default class Profile extends React.Component {
             // showBioEditor={this.props.showBioEditor}
             />
             </div>
-        //     <ProfilePic
-        //     image={this.props.image}
-        //     // firstName={this.props.firstName}
-        //     // lastName={this.props.lastName}
-        //
-        // showUploader={this.props.showUploader}
-        //
-        //   />
 
 
 

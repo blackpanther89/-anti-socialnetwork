@@ -160,13 +160,16 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 //============================================================================//
 app.get('/bio', (req, res) => {
     db.setBio(req.session.userId).then(results=>{
+    console.log('results', results);
         res.json(results)
     }).catch(err => {
       res.json({error: true});
     })
 })
  app.post('/bio',(req, res)=> {
-     db.setBio(req.body.text, req.session.userId).then(results=>{
+
+     db.setBio( req.session.userId).then(results=>{
+             console.log('results', results);
          res.json(results)
      }).catch(err => {
        res.json({error: true});
