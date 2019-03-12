@@ -26,7 +26,7 @@ h1{
     color: black;
     margin-top: 0px;
     font-size: 20px;
-font-family: 'Shadows Into Light', cursive;
+    font-family: 'Shadows Into Light', cursive;
 }
 img {
     width: 60px;
@@ -86,7 +86,7 @@ input  {
     text-align: center;
     margin: auto;
     display: block;
-    opacity: 0.6;
+    opacity: 0.6
 }
 input:hover {
   /* background-color:	#DDA0DD; */
@@ -110,8 +110,15 @@ p {
 }
 
 .error {
-    color: red;
+    color: black;
     text-align: center;
     margin: auto;
     display: block;
+}
+.others{
+    border: solid 1px black;
+    text-align:center;
+
+
+
 }

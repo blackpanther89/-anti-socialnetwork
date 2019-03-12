@@ -17,7 +17,7 @@ export default class Profile extends React.Component {
         return(
             <div className="profile">
                 <h1 className="pic2"> <img src={this.props.image}/>
-                    {this.props.firstName} 
+                    {this.props.firstName}
                 </h1>
 
                 <ProfilePic
@@ -28,7 +28,7 @@ export default class Profile extends React.Component {
                 <br/>
                 <h1>  Hello, {this.props.firstName} {this.props.lastName} how are you doing today?</h1>
 
-                <p> Bio {this.props.bio}</p>
+                <p> {this.props.bio}</p>
 
 
                 <BioEditor

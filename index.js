@@ -173,10 +173,21 @@ app.post('/bio',(req, res)=> {
         res.json(results.rows[0].bio);
     });
 });
+
+//============================================================================//
+app.get('/users/:id',( req, res)=>{
+    if(req.params.id == req.session.userId){
+        res.json({bla:true});
+    }
+
+    db.getUserById(req.params.id).then(results=>{
+        res.json(results.rows[0]);
+    });
+});
 //============================================================================//
 app.get('/get-initial-status/:otherUserId', (req, res)=>{
     //db quere to get initial status of friendship
-    //once we get thet initial status we gonna res.json  to the friend commponnent 
+    //once we get thet initial status we gonna res.json  to the friend commponnent
     console.log('GET /get-initial-status running');
 
 });
