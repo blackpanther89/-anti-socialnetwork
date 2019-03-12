@@ -1,13 +1,38 @@
 * {
-    background-color: white;
+    background-color: purple;
+    font-family: 'Shadows Into Light', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
 }
+
+
+.header{
+    border:black;
+    background-color: black;
+
+}
+.pic2{
+
+    display: inline-grid;
+    margin-left:  20px;
+margin-top: 20px;
+font-size: 15px;
+font-family: 'Shadows Into Light', cursive;
+}
+
 h1{
     color: black;
+    margin-top: 0px;
+    font-size: 20px;
+font-family: 'Shadows Into Light', cursive;
 }
 img {
-    width: 80px;
-    height: 80px;
-    padding: 20px;
+    width: 60px;
+    height: 60px;
+
+
 }
 
 .login {
@@ -23,90 +48,14 @@ button {
     margin: auto;
     margin-bottom: 20px;
     display: block;
-    /* opacity: 0.6; */
-    background-color: #004A7F;
-    -webkit-border-radius: 10px;
-    border: none;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: block;
-    font-family: Arial;
-    font-size: 15px;
-    padding: 3px 5px;
-    text-decoration: none;
-    -webkit-animation: glowing 1500ms infinite;
-    -moz-animation: glowing 1500ms infinite;
-    -o-animation: glowing 1500ms infinite;
-    animation: glowing 1500ms infinite;
+    color: black;
+    width: 50px;
+
+}
+button:hover{
+background-color: purple;
 }
 
-@-webkit-keyframes glowing {
-    0% {
-        background-color: #B20000;
-        -webkit-box-shadow: 0 0 3px #B20000;
-    }
-
-    50% {
-        background-color: #FF0000;
-        -webkit-box-shadow: 0 0 40px #FF0000;
-    }
-
-    100% {
-        background-color: #B20000;
-        -webkit-box-shadow: 0 0 3px #B20000;
-    }
-}
-
-@-moz-keyframes glowing {
-    0% {
-        background-color: #B20000;
-        -moz-box-shadow: 0 0 3px #B20000;
-    }
-
-    50% {
-        background-color: #FF0000;
-        -moz-box-shadow: 0 0 40px #FF0000;
-    }
-
-    100% {
-        background-color: #B20000;
-        -moz-box-shadow: 0 0 3px #B20000;
-    }
-}
-
-@-o-keyframes glowing {
-    0% {
-        background-color: #B20000;
-        box-shadow: 0 0 3px #B20000;
-    }
-
-    50% {
-        background-color: #FF0000;
-        box-shadow: 0 0 40px #FF0000;
-    }
-
-    100% {
-        background-color: #B20000;
-        box-shadow: 0 0 3px #B20000;
-    }
-}
-
-@keyframes glowing {
-    0% {
-        background-color: #B20000;
-        box-shadow: 0 0 3px #B20000;
-    }
-
-    50% {
-        background-color: #FF0000;
-        box-shadow: 0 0 40px #FF0000;
-    }
-
-    100% {
-        background-color: #B20000;
-        box-shadow: 0 0 3px #B20000;
-    }
-}
 
 #welcome {
     border: 1px solid black;
@@ -117,6 +66,7 @@ button {
     border: solid black;
     text-align: center;
     margin: auto;
+
     display: block;
     width: 500px;
     opacity:0.6;
@@ -130,14 +80,17 @@ button {
     display: block;
 }
 
-input {
-    color: black;
+input  {
+
+    background-color: white;
     text-align: center;
     margin: auto;
     display: block;
     opacity: 0.6;
 }
-
+input:hover {
+  /* background-color:	#DDA0DD; */
+}
 h1 {
     color: black;
     text-align: center;
@@ -146,6 +99,14 @@ h1 {
 p {
     color: black;
     text-align: center;
+}
+/* textarea:hover{
+    background-color: purple;
+} */
+.bio{
+    text-align: center;
+    margin: auto;
+    display: block;
 }
 
 .error {

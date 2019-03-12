@@ -170,7 +170,7 @@ app.post('/bio',(req, res)=> {
     console.log('req.body', req.body);
     db.setBio( req.body.bio,req.session.userId).then(results=>{
         console.log('results', results);
-        res.json(results);
+        res.json(results.rows[0].bio);
     });
 });
 //============================================================================//

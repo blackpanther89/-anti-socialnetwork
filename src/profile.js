@@ -13,24 +13,28 @@ export default class Profile extends React.Component {
 
     }
     render() {
+        console.log('this.props in profile', this.props);
         return(
             <div className="profile">
                 <h1 className="pic2"> <img src={this.props.image}/>
+                    {this.props.firstName} 
                 </h1>
+
                 <ProfilePic
                     image={this.props.image}
                     showUploader={this.props.showUploader}
 
                 />
-                <h1> Name: {this.props.firstName}</h1>
-                <h2> Last Name: {this.props.lastName}</h2>
-                <p> Bio:{this.props.bio}</p>
-                {this.state.updateBio && <BioEditor bio={this.props.bio}/>}
+                <br/>
+                <h1>  Hello, {this.props.firstName} {this.props.lastName} how are you doing today?</h1>
+
+                <p> Bio {this.props.bio}</p>
+
 
                 <BioEditor
                     bio={this.props.bio}
                     setBio={this.props.setBio}
-                //     // showBioEditor={this.props.showBioEditor}
+
                 />
 
             </div>

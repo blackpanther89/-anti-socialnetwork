@@ -46,14 +46,10 @@ export default class App extends React.Component {
                 bio: data.data.bio
 
             },()=>{
-                console.log('this.state', this.state);
+                console.log('this.state in app', this.state);
             });
         });
-        axios.get('/bio').then(data=>{
-            this.setState({
-                bio: data.data.bio
-            });
-        });
+        
     }
 
     render() {
@@ -64,8 +60,9 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <div className="fr">
-                    <img src="./logo.jpeg" alt="Social network logo" />
+                <div className="header">
+
+                    <img src="./logo.jpg" alt="Social network logo" />
 
 
                 </div>

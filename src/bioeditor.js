@@ -9,8 +9,7 @@ export default class BioEditor extends React.Component {
             BioEditorIsVisible: false,
             new:""
         };
-        // this.showBioEditor=this.showBioEditor.bind(this);
-        
+        this.showBioEditor=this.showBioEditor.bind(this);
         this.handleChange= this.handleChange.bind(this);
         this.updateBio= this.updateBio.bind(this);
     }
@@ -22,38 +21,39 @@ export default class BioEditor extends React.Component {
             }
         );
     }
+    showBioEditor(){
+        this.setState({ BioEditorIsVisible: true});
+
+    }
 
     updateBio() {
-        console.log('this.state.new',this.state.new);
+
         axios.post('/bio',{bio:this.state.new}).then(({data}) => {
             console.log('data', data);
-            console.log('this.props updateBio', this.props );
-            this.props.setBio(data.data.bio);
+
+            this.props.setBio(data);
         });
     }
 
     render() {
+        console.log('this.props, props in bio editor eee', this.props);
         return(
 
             <div className="bio">
-                {this.state.updateBio && <BioEditor bio={this.state.bio}/>}
 
-                <p> Edit Bio </p>
+                {this.props.bio &&  <button onClick={this.showBioEditor}> Edit Bio </button> }
 
-                <textarea name="text" rows="4" cols="50" onChange={this.handleChange}/>
-                <button onClick={this.updateBio}> Save </button>
+                {this.state.BioEditorIsVisible && (
+                    <div>
+                        <textarea name="text" rows="4" cols="50" onChange={this.handleChange}/>
+                        <button onClick={this.updateBio}> Save </button>
+                    </div>
+                )}
+            
+
             </div>
-
         );
+
+
     }
 }
-
-
-
-// if (data.success) {
-//     location.replace('./app');
-// } else {
-//     this.setState({
-//         error: true,
-//     });
-// }
