@@ -174,6 +174,13 @@ app.post('/bio',(req, res)=> {
     });
 });
 //============================================================================//
+app.get('/get-initial-status/:otherUserId', (req, res)=>{
+    //db quere to get initial status of friendship
+    //once we get thet initial status we gonna res.json  to the friend commponnent 
+    console.log('GET /get-initial-status running');
+
+});
+//============================================================================//
 app.get('*', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });

@@ -35,9 +35,14 @@ module.exports.userProfilePic = function userProfilePic(
         [id, image_url],
     );
 };
-module.exports.getBioById = function getBioById( id ){
-    return db.query( `SELECT bio FROM users WHERE id =$1` , [id]);
+module.exports.getBioById = function getBioById(id) {
+    return db.query(`SELECT bio FROM users WHERE id =$1`, [id]);
 };
-module.exports.setBio = function setBio( bio, id ){
-    return db.query( `UPDATE users SET bio= $1 WHERE id =$2 RETURNING bio` , [bio, id]);
+module.exports.setBio = function setBio(bio, id) {
+    return db.query(`UPDATE users SET bio= $1 WHERE id =$2 RETURNING bio`, [bio, id]);
+};
+
+module.exports.getInitialStatus = function getInitialStatus(myId, otherUserId) {
+    return db.query(`SELECT * FROM friendships
+        WHERE receiver =$1 AND sender =$2 OR receiver =$2 AND sender=$1`, [myId, otherUserId]);
 };

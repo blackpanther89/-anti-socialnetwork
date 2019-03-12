@@ -32,6 +32,7 @@ export default class BioEditor extends React.Component {
             console.log('data', data);
 
             this.props.setBio(data);
+            this.setState({BioEditorIsVisible:false});
         });
     }
 
@@ -41,6 +42,7 @@ export default class BioEditor extends React.Component {
 
             <div className="bio">
 
+                {!this.props.bio &&  <button onClick={this.showBioEditor}>  Add Bio </button> }
                 {this.props.bio &&  <button onClick={this.showBioEditor}> Edit Bio </button> }
 
                 {this.state.BioEditorIsVisible && (
@@ -49,7 +51,7 @@ export default class BioEditor extends React.Component {
                         <button onClick={this.updateBio}> Save </button>
                     </div>
                 )}
-            
+
 
             </div>
         );
