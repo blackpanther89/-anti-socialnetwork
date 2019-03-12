@@ -27,7 +27,7 @@ export default class OtherProfile extends React.Component {
     }
     render (){
         return(
-            
+
             <div className= "others">
                 <h3>Other People Profile </h3>
                 {this.state.firstname}

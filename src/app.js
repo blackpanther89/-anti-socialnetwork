@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from './axios';
-import ProfilePic from './profilepic';
 import Uploader from './uploader';
 import Profile from './profile';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -68,11 +67,12 @@ export default class App extends React.Component {
                     <img src="/logo.jpg" alt="Social network logo" />
 
                 </div>
+
                 <BrowserRouter>
                     <div>
                         <Route
                             exact
-                            path="/user/:id"
+                            path="/"
                             render={() => (
                                 <Profile
                                     id={this.state.id}

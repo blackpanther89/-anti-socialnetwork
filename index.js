@@ -176,13 +176,16 @@ app.post('/bio',(req, res)=> {
 
 //============================================================================//
 app.get('/users/:id',( req, res)=>{
+    console.log('id', req.params.id);
     if(req.params.id == req.session.userId){
-        res.json({bla:true});
-    }
+        res.json({match:true});
+    }else{
 
-    db.getUserById(req.params.id).then(results=>{
-        res.json(results.rows[0]);
-    });
+        db.getUserById(req.params.id).then(results=>{
+            console.log("results in getsuserapi", results);
+            res.json(results.rows[0]);
+        });
+    }
 });
 //============================================================================//
 app.get('/get-initial-status/:otherUserId', (req, res)=>{
