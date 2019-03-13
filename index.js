@@ -165,6 +165,7 @@ app.get('/bio', (req, res) => {
     }).catch(err => {
         res.json({error: true});
     });
+
 });
 app.post('/bio',(req, res)=> {
     console.log('req.body', req.body);
@@ -190,14 +191,32 @@ app.get('/users/:id',( req, res)=>{
 //============================================================================//
 app.get('/get-initial-status/:otherUserId', (req, res)=>{
     console.log('GET /get-initial-status running');
-    db.getInitialStatus(req.params.myId, req.params.otherUserId).then(data=>{
+    db.getInitialStatus(req.params.id, req.session.userId).then(data=>{
         res.json(data);
     });
-    //db quere to get initial status of friendship
-    //once we get thet initial status we gonna res.json  to the friend commponnent
+
 
 });
 
+//============================================================================//
+app.post('/send-friend-request/id',(req, res)=>{
+    console.log('/send-friend-request');
+    db.sendFriendRequest(req.params.id, req.session.userId).then(data=>{
+        res.json(data);
+    });
+});
+app.post('/accept-friend-request/id',(req, res)=>{
+    console.log('/accept-friend-request');
+    db.acceptFriendRequest(req.params.id, req.session.userId).then(data=>{
+        res.json(data);
+    });
+});
+app.post('/cancel-friend-request/id',(req, res)=>{
+    console.log('/cancel-friend-request');
+    db.sendFriendRequest(req.params.id, req.session.userId).then(data=>{
+        res.json(data);
+    });
+});
 //============================================================================//
 app.get('*', function(req, res) {
     res.sendFile(__dirname + '/index.html');

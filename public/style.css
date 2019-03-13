@@ -15,9 +15,9 @@
 }
 .pic2{
 
-    display: inline-grid;
-    margin-left:  20px;
-margin-top: 20px;
+float: right;
+margin-right: 30px;
+margin-top: 7px;
 font-size: 15px;
 font-family: 'Shadows Into Light', cursive;
 }

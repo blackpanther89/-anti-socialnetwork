@@ -47,7 +47,7 @@ module.exports.getInitialStatus = function getInitialStatus(myId, otherUserId) {
         WHERE receiver =$1 AND sender =$2 OR receiver =$2 AND sender=$1`, [myId, otherUserId]);
 };
 
-module.exports.friendRequest = function friendRequest(myId, otherUserId){
+module.exports.sendFriendRequest = function sendFriendRequest(myId, otherUserId){
     return db.query (`INSERT INTO friendships (receiver, sender)  VALUES ($1, $2) RETURNING *`,[myId, otherUserId]);
 };
 module.exports.acceptFriendRequest = function acceptFriendRequest(myId, otherUserId){

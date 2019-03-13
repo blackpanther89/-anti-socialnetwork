@@ -16,9 +16,7 @@ export default class Profile extends React.Component {
         console.log('this.props in profile', this.props);
         return(
             <div className="profile">
-                <h1 className="pic2"> <img src={this.props.image}/>
-                    {this.props.firstName}
-                </h1>
+            
 
                 <ProfilePic
                     image={this.props.image}
