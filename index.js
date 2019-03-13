@@ -181,9 +181,9 @@ app.get('/users/:id',( req, res)=>{
         res.json({match:true});
     }else{
 
-        db.getUserById(req.params.id).then(results=>{
-            console.log("results in getsuserapi", results);
-            res.json(results.rows[0]);
+        db.getUserById(req.params.id).then(data=>{
+            console.log("data in getsuserapi", data);
+            res.json(data.rows[0]);
         });
     }
 });
