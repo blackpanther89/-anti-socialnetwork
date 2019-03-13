@@ -66,11 +66,9 @@ export default class App extends React.Component {
 
                     <img src="/logo.jpg" alt="Social network logo" />
 
-
                 </div>
 
                 <BrowserRouter>
-                
                     <div>
                         <Route
                             exact
