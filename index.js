@@ -191,7 +191,7 @@ app.get('/users/:id',( req, res)=>{
 //============================================================================//
 app.get('/get-initial-status/:otherUserId', (req, res)=>{
     console.log('GET /get-initial-status running');
-    db.getInitialStatus(req.params.id, req.session.userId).then(data=>{
+    db.getInitialStatus(req.params.otherUserId, req.session.userId).then(data=>{
         res.json(data);
     });
 
@@ -199,22 +199,29 @@ app.get('/get-initial-status/:otherUserId', (req, res)=>{
 });
 
 //============================================================================//
-app.post('/send-friend-request/id',(req, res)=>{
+app.post('/send-friend-request/:id',(req, res)=>{
+    console.log('/send-friend-request/:id eeeeeeeee', );
+    const myId =  req.session.userId;
+    const otherUserId = req.params.id;
     console.log('/send-friend-request');
-    db.sendFriendRequest(req.params.id, req.session.userId).then(data=>{
-        res.json(data);
+    db.sendFriendRequest( myId , otherUserId).then(data=>{
+        res.json({success:true, data: data.rows[0]});
     });
 });
-app.post('/accept-friend-request/id',(req, res)=>{
+app.post('/accept-friend-request/:id',(req, res)=>{
+    const myId =  req.session.userId;
+    const otherUserId = req.params.id;
     console.log('/accept-friend-request');
-    db.acceptFriendRequest(req.params.id, req.session.userId).then(data=>{
-        res.json(data);
+    db.acceptFriendRequest(myId , otherUserId).then(data=>{
+        res.json({success:true, data: data.rows[0]});
     });
 });
-app.post('/cancel-friend-request/id',(req, res)=>{
+app.post('/cancel-friend-request/:id',(req, res)=>{
+    const myId =  req.session.userId;
+    const otherUserId = req.params.id;
     console.log('/cancel-friend-request');
-    db.sendFriendRequest(req.params.id, req.session.userId).then(data=>{
-        res.json(data);
+    db.cancelFriendRequest(myId , otherUserId).then(()=>{
+        res.json({success:true});
     });
 });
 //============================================================================//

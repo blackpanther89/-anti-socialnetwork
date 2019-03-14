@@ -42,16 +42,16 @@ module.exports.setBio = function setBio(bio, id) {
     return db.query(`UPDATE users SET bio= $1 WHERE id =$2 RETURNING bio`, [bio, id]);
 };
 
-module.exports.getInitialStatus = function getInitialStatus(myId, otherUserId) {
+module.exports.getInitialStatus = function getInitialStatus(otherUserId, myId) {
     return db.query(`SELECT * FROM friendships
-        WHERE receiver =$1 AND sender =$2 OR receiver =$2 AND sender=$1`, [myId, otherUserId]);
+        WHERE receiver =$1 AND sender =$2 OR receiver =$2 AND sender=$1`, [otherUserId, myId]);
 };
 
 module.exports.sendFriendRequest = function sendFriendRequest(myId, otherUserId){
-    return db.query (`INSERT INTO friendships (receiver, sender)  VALUES ($1, $2) RETURNING *`,[myId, otherUserId]);
+    return db.query (`INSERT INTO friendships (receiver, sender)  VALUES ($1, $2) RETURNING *`,[otherUserId, myId]);
 };
 module.exports.acceptFriendRequest = function acceptFriendRequest(myId, otherUserId){
-    return db.query (`UPDATE friendships SET accepted = true WHERE (receiver =$1 AND sender =$2) OR (receiver =$2 AND sender =$1)` ,[myId, otherUserId]);
+    return db.query (`UPDATE friendships SET accepted = true WHERE (receiver =$1 AND sender =$2) OR (receiver =$2 AND sender =$1) RETURNING *` ,[myId, otherUserId]);
 };
 
 module.exports.cancelFriendRequest = function cancelFriendRequest(myId, otherUserId){

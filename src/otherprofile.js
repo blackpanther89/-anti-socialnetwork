@@ -12,13 +12,13 @@ export default class OtherProfile extends React.Component {
 
 
     componentDidMount(){
-        console.log('componentDidMount');
+        // console.log('componentDidMount');
         axios.get('/users/' + this.props.match.params.id).then(({data})=>{
-            console.log('data OtherProfile', data);
+            // console.log('data OtherProfile', data);
             if( this.props.id == this.props.match.params.id){
                 this.props.history.push('/');
             } else{
-                console.log('hjsdhsdhj');
+                // console.log('hjsdhsdhj');
                 this.setState(data);
 
             }
