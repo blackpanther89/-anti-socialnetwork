@@ -13,13 +13,17 @@
     background-color: black;
 
 }
+.profilepic{
+    margin top: 30px;
+
+}
 .pic2{
 
 float: right;
 margin-right: 30px;
-margin-top: 7px;
-font-size: 15px;
-font-family: 'Shadows Into Light', cursive;
+margin-top: 10px;
+border-radius: 85px;
+
 }
 
 h1{
@@ -31,7 +35,7 @@ h1{
 img {
     width: 60px;
     height: 60px;
-
+    border-radius: 50px;
 
 }
 
@@ -45,11 +49,15 @@ img {
 button {
     /* color: red; */
     text-align: center;
+    color: white;
+    background-color: black;
     margin: auto;
+    margin-top: 20px;
     margin-bottom: 20px;
     display: block;
-    color: black;
-    width: 50px;
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
 
 }
 /* button:hover{
@@ -75,9 +83,11 @@ background-color: purple;
 .default {
     width: 150px;
     height: 150px;
-    text-align: center;
-    margin: auto;
+margin: auto;
+margin-top: 30px;
+
     display: block;
+
 }
 
 input  {
@@ -116,9 +126,33 @@ p {
     display: block;
 }
 .others{
-    border: solid 1px black;
+
+    border: solid 3px black;
     text-align:center;
+    width: 800px;
+    /* margin-left: 150px; */
+margin: 50px auto 0;
+
+    display: block;
 
 
 
 }
+.others-title{
+    border: solid 3px black;
+    height: 50px;
+    margin: 10px;
+}
+.others-pic{
+    width: 200px;
+    height: 200px;
+}
+/* .bio{
+    border: 1px solid black;
+    width: 800px;
+    margin: 10px;
+
+    display: block;
+
+
+} */
