@@ -33,8 +33,8 @@ export class Friends extends React.Component {
                 {wannabes.map(wannabes=>{
                     return(
                         <div className= "wannabes" key={wannabes.id} >
-                            <img src= {wannabes.image}/>
-                            {wannabes.firstName} {wannabes.lastName}
+                            <img src= {wannabes.image_url}/>
+                            {wannabes.firstname} {wannabes.lastname}
                             <button
                                 onClick ={()=>this.props.dispatch(acceptFriend(wannabes.id))}>
                     ACCEPT FRIEND REQUEST</button>
@@ -48,9 +48,9 @@ export class Friends extends React.Component {
                     <h1> MY FRIENDS</h1>
                     {friends.map(friends=>{
                         return(
-                            <div className= "friends" key={friends.lastName} >
-                                <img src= {friends.image}/>
-                                {friends.firstName} {friends.lastName}
+                            <div className= "friends" key={friends.id} >
+                                <img src= {friends.image_url}/>
+                                {friends.firstname} {friends.lastname}
 
                                 <button onClick={()=>this.props.dispatch(unfriend(friends.id))}>
                             END FRIENDSHIP </button>
