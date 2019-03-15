@@ -4,6 +4,8 @@ import Uploader from './uploader';
 import Profile from './profile';
 import { BrowserRouter, Route } from 'react-router-dom';
 import OtherProfile from './otherprofile';
+import Friends from './friends';
+
 
 
 export default class App extends React.Component {
@@ -101,8 +103,14 @@ export default class App extends React.Component {
                                 />
                             )}
                         />
-
+                        <Route
+                            path="/friends"
+                            render={()=> (
+                                <Friends/>
+                            )}
+                        />
                     </div>
+
                 </BrowserRouter>
             </div>
 

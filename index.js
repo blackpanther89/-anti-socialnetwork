@@ -162,11 +162,12 @@ app.get('/bio', (req, res) => {
     db.getBioById(req.session.userId).then(results=>{
         console.log('results in setBio', results);
         res.json(results);
-    }).catch(err => {
+    }).catch(error => {
+        console.log('error',error);
         res.json({error: true});
     });
-
 });
+
 app.post('/bio',(req, res)=> {
     console.log('req.body', req.body);
     db.setBio( req.body.bio,req.session.userId).then(results=>{
@@ -200,28 +201,38 @@ app.get('/get-initial-status/:otherUserId', (req, res)=>{
 
 //============================================================================//
 app.post('/send-friend-request/:id',(req, res)=>{
-    console.log('/send-friend-request/:id eeeeeeeee', );
+    // console.log('/send-friend-request/:id eeeeeeeee', );
     const myId =  req.session.userId;
     const otherUserId = req.params.id;
-    console.log('/send-friend-request');
     db.sendFriendRequest( myId , otherUserId).then(data=>{
         res.json({success:true, data: data.rows[0]});
     });
 });
 app.post('/accept-friend-request/:id',(req, res)=>{
+    // console.log('/accept-friend-request');
     const myId =  req.session.userId;
     const otherUserId = req.params.id;
-    console.log('/accept-friend-request');
     db.acceptFriendRequest(myId , otherUserId).then(data=>{
         res.json({success:true, data: data.rows[0]});
     });
 });
 app.post('/cancel-friend-request/:id',(req, res)=>{
+    // console.log('/cancel-friend-request');
     const myId =  req.session.userId;
     const otherUserId = req.params.id;
-    console.log('/cancel-friend-request');
     db.cancelFriendRequest(myId , otherUserId).then(()=>{
         res.json({success:true});
+    });
+});
+//============================================================================//
+app.get('/get-friends-and-wannabes/:id',(req,res)=>{
+    const myId= req.session.userId;
+    console.log('hello bitches from getFriendsAndWannabes');
+    db.getFriendsAndWannabes(myId).then(data=>{
+        res.json({sucess:true, data:data.rows[0]});
+    }).catch(error => {
+        console.log('error',error);
+        res.json({error: true});
     });
 });
 //============================================================================//

@@ -56,4 +56,13 @@ module.exports.acceptFriendRequest = function acceptFriendRequest(myId, otherUse
 
 module.exports.cancelFriendRequest = function cancelFriendRequest(myId, otherUserId){
     return db.query (`DELETE FROM friendships WHERE (receiver =$1 AND sender =$2) OR (receiver =$2 AND sender =$1)` ,[myId, otherUserId]);
+
+};
+module.exports.getFriendsAndWannabes= function getFriendsAndWannabes(myId){
+    return db.query (`SELECT users.id  users.firstName,  users.lastName,  users.image_url, accepted
+    FROM friendships
+    JOIN users
+    ON (accepted = false AND receiver = $1 AND sender = users.id)
+    OR (accepted = true AND receiver = $1 AND sender = users.id)
+    OR (accepted = true AND sender = $1 AND receiver = users.id)`,[myId]);
 };
