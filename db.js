@@ -59,7 +59,7 @@ module.exports.cancelFriendRequest = function cancelFriendRequest(myId, otherUse
 
 };
 module.exports.getFriendsAndWannabes= function getFriendsAndWannabes(myId){
-    return db.query (`SELECT users.id  users.firstName,  users.lastName,  users.image_url, accepted
+    return db.query (`SELECT users.id, users.firstName,  users.lastName,  users.image_url, accepted
     FROM friendships
     JOIN users
     ON (accepted = false AND receiver = $1 AND sender = users.id)

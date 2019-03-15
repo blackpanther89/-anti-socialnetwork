@@ -25,7 +25,7 @@ export default class Profile extends React.Component {
                     />
                 </div>
                 <br/>
-                <h1>  Hello, {this.props.firstName} how are you doing today?</h1>
+                <h1>  Hello, {this.props.firstName} how are you today?</h1>
                 <br/>
                 <div className="bio">
                     <p> {this.props.bio}</p>

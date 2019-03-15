@@ -211,25 +211,31 @@ app.post('/send-friend-request/:id',(req, res)=>{
 app.post('/accept-friend-request/:id',(req, res)=>{
     // console.log('/accept-friend-request');
     const myId =  req.session.userId;
+    console.log('myId', myId);
+    // console.log('otherUserId', otherUserId);
     const otherUserId = req.params.id;
     db.acceptFriendRequest(myId , otherUserId).then(data=>{
         res.json({success:true, data: data.rows[0]});
     });
 });
 app.post('/cancel-friend-request/:id',(req, res)=>{
-    // console.log('/cancel-friend-request');
+    console.log('/cancel-friend-request');
     const myId =  req.session.userId;
-    const otherUserId = req.params.id;
-    db.cancelFriendRequest(myId , otherUserId).then(()=>{
+    console.log('myid', myId);
+    // const otherUserId = req.params.id;
+    // console.log('otherUserId', otherUserId);
+    db.cancelFriendRequest(myId).then(()=>{
         res.json({success:true});
+
     });
 });
 //============================================================================//
-app.get('/get-friends-and-wannabes/:id',(req,res)=>{
+app.get('/get-friends-and-wannabes',(req,res)=>{
     const myId= req.session.userId;
     console.log('hello bitches from getFriendsAndWannabes');
     db.getFriendsAndWannabes(myId).then(data=>{
-        res.json({sucess:true, data:data.rows[0]});
+        console.log('data in getFriendsAndWannabes', data);
+        res.json({data});
     }).catch(error => {
         console.log('error',error);
         res.json({error: true});
