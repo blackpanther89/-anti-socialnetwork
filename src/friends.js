@@ -5,8 +5,8 @@ import{unfriend, acceptFriend}from './actions';
 
 
 export class Friends extends React.Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
     }
 
     componentDidMount(){
@@ -23,6 +23,7 @@ export class Friends extends React.Component {
         const {wannabes} = this.props;
         const {friends} =this.props;
         console.log('this.props', this.props);
+        console.log('wannabes', wannabes);
         if(!wannabes || !friends){
             return null;
         }
@@ -37,7 +38,7 @@ export class Friends extends React.Component {
                             {wannabes.firstname} {wannabes.lastname}
                             <button
                                 onClick ={()=>this.props.dispatch(acceptFriend(wannabes.id))}>
-                    ACCEPT FRIEND REQUEST</button>
+                    Accept Friend Request</button>
 
                         </div>
 

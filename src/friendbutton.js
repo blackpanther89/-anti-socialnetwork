@@ -34,6 +34,7 @@ export default class FriendButton extends React.Component {
             axios.post("/send-friend-request/" + this.props.otherUserId).then(data=>{
                 this.setState({
                     friendship: data.data.data
+
                 });
             });
         } else if (this.state.friendship.accepted === true){

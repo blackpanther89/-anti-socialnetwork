@@ -201,30 +201,31 @@ app.get('/get-initial-status/:otherUserId', (req, res)=>{
 
 //============================================================================//
 app.post('/send-friend-request/:id',(req, res)=>{
-    // console.log('/send-friend-request/:id eeeeeeeee', );
+    console.log('/send-friend-request/:id eeeeeeeee', );
     const myId =  req.session.userId;
+    console.log('myid in sendFriendRequest', myId);
     const otherUserId = req.params.id;
+    console.log('otherUserId in sendFriendRequest', otherUserId);
     db.sendFriendRequest( myId , otherUserId).then(data=>{
+        console.log('data in sendFriendRequest', data);
         res.json({success:true, data: data.rows[0]});
     });
 });
 app.post('/accept-friend-request/:id',(req, res)=>{
     // console.log('/accept-friend-request');
     const myId =  req.session.userId;
-    console.log('myId', myId);
-    // console.log('otherUserId', otherUserId);
     const otherUserId = req.params.id;
+    console.log('otherUserId in acceptFriendRequest', otherUserId);
     db.acceptFriendRequest(myId , otherUserId).then(data=>{
         res.json({success:true, data: data.rows[0]});
     });
 });
 app.post('/cancel-friend-request/:id',(req, res)=>{
-    console.log('/cancel-friend-request');
     const myId =  req.session.userId;
-    console.log('myid', myId);
-    // const otherUserId = req.params.id;
-    // console.log('otherUserId', otherUserId);
-    db.cancelFriendRequest(myId).then(()=>{
+    const otherUserId = req.params.id;
+    // console.log('myid in cancelFriendRequest', myId);
+    // console.log('otherUserId in cancelFriendRequest', otherUserId);
+    db.cancelFriendRequest(myId, otherUserId).then(()=>{
         res.json({success:true});
 
     });
@@ -232,7 +233,7 @@ app.post('/cancel-friend-request/:id',(req, res)=>{
 //============================================================================//
 app.get('/get-friends-and-wannabes',(req,res)=>{
     const myId= req.session.userId;
-    console.log('hello bitches from getFriendsAndWannabes');
+    // console.log('myId', myId);
     db.getFriendsAndWannabes(myId).then(data=>{
         console.log('data in getFriendsAndWannabes', data);
         res.json({data});
