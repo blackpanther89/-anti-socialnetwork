@@ -9,7 +9,7 @@ export default class Uploader extends React.Component  {
     }
     render() {
         return (
-            <div className="pic">
+            <div className="uploader-box">
                 <form>
                     <label htmlFor="file">Upload</label>
 

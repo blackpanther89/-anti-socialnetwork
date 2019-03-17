@@ -32,8 +32,10 @@ export default class Registration extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className= "register-box">
+                <h2> REGISTER</h2>
                 {this.state.error && <div className="error">Oops!</div>}
+                <br />
                 <br />
                 <input
                     name="firstName"
@@ -49,7 +51,7 @@ export default class Registration extends React.Component {
                 <br />
                 <input
                     name="email"
-                    placeholder="Email"
+                    placeholder=" Email"
                     onChange={e => this.handleChange(e)}
                 />
                 <br />
@@ -60,9 +62,14 @@ export default class Registration extends React.Component {
                     onChange={e => this.handleChange(e)}
                 />
                 <br />
-                <button type="submit" onClick={this.submit}> Register</button>
+                <button  className="register-button" type="submit" onClick={this.submit}> Register</button>
                 <br />
-                <Link className="login" to="/login">Click here to Log in ⚑</Link>;
+                <br/>
+                <br />
+                <br/>
+                <br />
+                <br/>
+                <Link className="login-link" to="/login">Click here to Log in </Link>
             </div>
         );
     }

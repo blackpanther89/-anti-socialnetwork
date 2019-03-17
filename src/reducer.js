@@ -10,7 +10,7 @@ export default function reducer(state = {}, action){
         state={
             ...state,
             users:state.users.filter(friends=>{
-                if (action.friends != friends.id){
+                if (action.id != friends.id){
                     return friends;
                 }
             })
@@ -20,7 +20,7 @@ export default function reducer(state = {}, action){
     if (action.type == 'ACCEPT_FRIEND_REQUEST') {
         state = Object.assign({}, state, {
             users: state.users.map(friends => {
-                if (action.friends == friends.id) {
+                if (action.id == friends.id) {
                     return Object.assign({}, friends, {
                         accepted: true
                     });

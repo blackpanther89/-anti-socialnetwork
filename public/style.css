@@ -1,119 +1,223 @@
-* {
-    background-color: purple;
-    font-family: 'Shadows Into Light', cursive;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+.header {
+    /* background-color: rgba(0, 0, 0, 0.5);
+    border:solid black;
+    height: 50px; */
 }
 
-
-.header{
-    border:black;
-    background-color: black;
-
-}
-.profilepic{
-    margin top: 30px;
-
-}
-.pic2{
-
-float: right;
-margin-right: 30px;
-margin-top: 10px;
-border-radius: 85px;
-
+body {
+    background: url(stefan-widua-698922-unsplash.jpg)no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-h1{
-    color: black;
+h1 {
+    padding-top: 20px;
+    color: white;
     margin-top: 0px;
     font-size: 20px;
-    font-family: 'Shadows Into Light', cursive;
-}
-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50px;
-
-}
-
-.login {
-    color: black;
     text-align: center;
-    margin: auto;
-    display: block;
+
 }
 
-button {
-    /* color: red; */
+h2 {
     text-align: center;
     color: white;
-    background-color: black;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: block;
-    width: 150px;
-    height: 40px;
-    border-radius: 30px;
+}
+
+.register-box {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    box-sizing: content-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.register-box:hover {
+    width: 430px;
+    height: 430px;
+    transition: 2s;
+}
+.register-button{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+.register-button:hover{
+    width: 260px;
+    height: 35px;
 
 }
+
+
+.login-link{
+    top: 20%;
+    color: white;
+}
+.login-link:hover{
+color: black;
+
+}
+.login-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    box-sizing: content-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+.login-box:hover {
+    width: 430px;
+    height: 230px;
+    transition: 2s;
+}
+
+.login-button{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+.login-button:hover{
+    width: 260px;
+    height: 35px;
+
+}
+
+.profile-box{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 450px;
+    box-sizing: content-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+
+}
+.welcome-profile-text{
+    color: white;
+}
+.welcome-profile-text-box{
+
+}
+
+/* .profilepic {
+    margin top: 30px;
+} */
+
+.little-profile-pic {
+    float: right;
+    width: 60px;
+    height: 60px;
+    margin-top: -70px;
+    margin-right: 30px;
+    border-radius: 85px;
+}
+
+.img-profile{
+    width: 100px;
+    height: 60px
+}
+
+
+.logo{
+
+    border-radius: 85px;
+    width: 60px;
+    height: 60px;
+}
+
+
+
+button {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+}
+button:hover{
+    width: 260px;
+    height: 35px;
+
+}
+
 /* button:hover{
 background-color: purple;
 } */
-
-
-#welcome {
-    border: 1px solid black;
-}
-
-.pic {
+.uploader-box {
 
     border: solid black;
-    text-align: center;
-    margin: auto;
-
-    display: block;
-    width: 500px;
-    opacity:0.6;
-}
-
-.default {
-    width: 150px;
-    height: 150px;
-margin: auto;
-margin-top: 30px;
-
-    display: block;
-
-}
-
-input  {
 
     background-color: white;
     text-align: center;
     margin: auto;
     display: block;
-    opacity: 0.6
+    width: 500px;
+    height: 400px;
+    /* opacity: 0.6; */
 }
-input:hover {
-  /* background-color:	#DDA0DD; */
+
+.default {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-top: 30px;
+    display: block;
+
 }
-h1 {
-    color: black;
+
+input {
+    background-color: transparent;
     text-align: center;
+    margin: auto;
+    display: block;
+
 }
+
+input:hover,
+input:focus {
+    opacity: .5;
+    color: white;
+    border: 1px solid black;
+    box-shadow: 0px 1px 0px black, inset 0px 3px 6px black;
+}
+
+
 
 p {
     color: black;
     text-align: center;
 }
+
 /* textarea:hover{
     background-color: purple;
 } */
-.bio{
+.bio {
     text-align: center;
     margin: auto;
     display: block;
@@ -125,28 +229,27 @@ p {
     margin: auto;
     display: block;
 }
-.others{
 
+.others {
     border: solid 3px black;
-    text-align:center;
+    text-align: center;
     width: 800px;
     /* margin-left: 150px; */
-margin: 50px auto 0;
-
+    margin: 50px auto 0;
     display: block;
-
-
-
 }
-.others-title{
+
+.others-title {
     border: solid 3px black;
     height: 50px;
     margin: 10px;
 }
-.others-pic{
+
+.others-pic {
     width: 200px;
     height: 200px;
 }
+
 /* .bio{
     border: 1px solid black;
     width: 800px;

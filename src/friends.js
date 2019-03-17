@@ -23,7 +23,7 @@ export class Friends extends React.Component {
         const {wannabes} = this.props;
         const {friends} =this.props;
         console.log('this.props', this.props);
-        console.log('wannabes', wannabes);
+        console.log('wannabes');
         if(!wannabes || !friends){
             return null;
         }

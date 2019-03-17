@@ -66,8 +66,8 @@ export default class App extends React.Component {
             <div>
                 <div className="header">
 
-                    <img src="/logo.jpg" alt="Social network logo" />
-                    <h1 className="pic2"> <img src={this.state.image}/>
+                    <img  className="logo" src="/logo.jpg" alt="Social network logo" />
+                    <h1> <img className="little-profile-pic" src={this.state.image}/>
 
                     </h1>
 
