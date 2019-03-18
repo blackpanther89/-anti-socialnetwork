@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server, { origins: 'localhost:8080' });
 const compression = require('compression');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
@@ -29,13 +31,17 @@ var uploader = multer({
     },
 });
 //============================================================================//
+
+const cookieSessionMiddleware = cookieSession({
+    secret: `I'm always angry.`,
+    maxAge: 1000 * 60 * 60 * 24 * 90
+});
+app.use(cookieSessionMiddleware);
+io.use(function(socket, next) {
+    cookieSessionMiddleware(socket.request, socket.request.res, next);
+});
+
 app.use(bodyParser.json());
-app.use(
-    cookieSession({
-        secret: `I'm always angry.`,
-        maxAge: 1000 * 60 * 60 * 24 * 14,
-    }),
-);
 
 app.use(csurf());
 
@@ -85,7 +91,8 @@ app.post('/registration', (req, res) => {
                 // console.log(req.session);
                 res.json({success: true});
             })
-            .catch(err => {
+            .catch(error => {
+                console.log('error',error);
                 res.json({error: true});
             });
     });
@@ -109,10 +116,12 @@ app.post('/login', (req, res) => {
                     res.json({error: true});
                 }
             })
-            .catch(err => {
+            .catch(error => {
+                console.log('error',error);
                 res.json({error: true});
             })
-            .catch(err => {
+            .catch(error => {
+                console.log('error',error);
                 res.json({error: true});
             });
     });
@@ -247,6 +256,48 @@ app.get('*', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 //============================================================================//
-app.listen(8080, function() {
+server.listen(8080, function() {
     console.log("I'm listening.");
+});
+//============================================================================//
+const onlineUsers={};
+// const userJoined={};
+// //when someone connnectes to the site this function will run
+
+io.on('connection',socket=>{
+    console.log('New connection', socket.id);
+    const {userId} = socket.request.session;
+    if (!userId){
+        return socket.disconnect();
+    }
+    onlineUsers[socket.id] =userId;
+    //send them the full list of online onlineUsers
+    const idsOnlineUsers = Object.values (onlineUsers);
+
+    db.getUsersByIds(idsOnlineUsers
+    ).then(
+        ({rows})=>{
+            socket.emit('onlineUsers',{
+                onlineUsers: rows
+            });
+        }
+    );
+
+    const alereadyHere = Object.values(
+        onlineUsers).filter(id => id == userId).length > 1;
+    if(!alereadyHere){
+        db.getUserById(userId).then(({rows})=>{
+            socket.broadcast.emit('userJoined',{
+                user:rows[0]
+            });
+
+        });
+    }
+
+    socket.on('disconnect',()=>{
+        delete onlineUsers[socket.id];
+        console.log('Disconnection!', socket.id);
+    });
+
+
 });

@@ -66,3 +66,7 @@ module.exports.getFriendsAndWannabes= function getFriendsAndWannabes(myId){
     OR (accepted = true AND receiver = $1 AND sender = users.id)
     OR (accepted = true AND sender = $1 AND receiver = users.id)`,[myId]);
 };
+module.exports.getUsersByIds= function getUsersByIds(arrayOfIds) {
+    return db.query( `SELECT id, firstName, lastName, image_url FROM users WHERE id = ANY($1)`,
+        [arrayOfIds]);
+};

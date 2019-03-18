@@ -20,7 +20,7 @@ export default class Uploader extends React.Component  {
                     }}/>
                     <br/>
                     <br/>
-                    <button> Upload Picture </button>
+                    <button className="upload"> Upload Picture </button>
 
                 </form>
             </div>

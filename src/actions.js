@@ -37,3 +37,29 @@ export function acceptFriend(id){
 
     );
 }
+//====================SOCKET.IO===============================================//
+export function onlineUsers(data){
+    console.log('data in onlineUsers', data);
+    return{
+        type: 'ONLINE_USERS',
+        onlineUsers: data.onlineUsers
+    };
+
+}
+
+export function userJoined (data){
+    console.log('data in userJoined', data);
+    return{
+        type: 'USER_JOINED',
+        userJoined: data.user
+    };
+
+}
+export function userLeft (data){
+    console.log('data in userLeft', data);
+    return{
+        type: 'USER_LEFT',
+        id: data
+    };
+
+}

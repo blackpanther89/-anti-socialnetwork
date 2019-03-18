@@ -40,15 +40,19 @@ export default class BioEditor extends React.Component {
         console.log('this.props, props in bio editor eee', this.props);
         return(
 
-            <div className="bio">
+            <div className="bio-box">
 
-                {!this.props.bio &&  <button onClick={this.showBioEditor}>  Add Bio </button> }
-                {this.props.bio &&  <button onClick={this.showBioEditor}> Edit Bio </button> }
+                {!this.props.bio &&  <button className="add-button"  onClick={this.showBioEditor}>  Add Bio </button> }
+                {this.props.bio &&  <button   className="edit-button" onClick={this.showBioEditor}> Edit Bio </button> }
+                <br/>
+                <br/>
+                <br/>
 
                 {this.state.BioEditorIsVisible && (
                     <div>
                         <textarea name="text" rows="4" cols="50" onChange={this.handleChange}/>
-                        <button onClick={this.updateBio}> Save </button>
+
+                        <button className="save-button" onClick={this.updateBio}> Save </button>
                     </div>
                 )}
 

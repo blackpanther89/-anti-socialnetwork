@@ -5,6 +5,7 @@ import Profile from './profile';
 import { BrowserRouter, Route } from 'react-router-dom';
 import OtherProfile from './otherprofile';
 import Friends from './friends';
+import OnlineUsers from './onlineusers';
 
 
 
@@ -107,6 +108,12 @@ export default class App extends React.Component {
                             path="/friends"
                             render={()=> (
                                 <Friends/>
+                            )}
+                        />
+                        <Route
+                            path="/online"
+                            render={()=> (
+                                <OnlineUsers/>
                             )}
                         />
                     </div>

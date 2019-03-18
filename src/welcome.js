@@ -14,7 +14,7 @@ export default class Welcome extends React.Component {
         return (
             <div id="welcome">
                 <div className="header">
-                    <img src="./logo.jpg" />
+                    <img  className="logo" src="./logo.jpg" />
                 </div>
                 <h1>WELCOME </h1>
 

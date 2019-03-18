@@ -7,7 +7,10 @@ import reduxPromise from 'redux-promise';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from './reducer';
 import { Provider }from 'react-redux';
+import * as io from 'socket.io-client';
+import {getSocket} from './socket';
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxPromise)));
+const socket =io.connect();
 
 let elem;
 
@@ -17,6 +20,7 @@ if (location.pathname == '/welcome') {
     elem = <Welcome />;
 } else {
     elem = (
+        getSocket(store),
         < Provider store = {store}>
             <App />
         </Provider>
