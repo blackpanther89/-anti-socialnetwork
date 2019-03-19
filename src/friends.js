@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {receiveFriendsWannabes} from './actions';
 import{unfriend, acceptFriend}from './actions';
+// import {Link} from 'react-router-dom';
 
 
 export class Friends extends React.Component {
@@ -46,6 +47,7 @@ export class Friends extends React.Component {
                 })}
 
                 <div className="my_friends">
+
                     <h3> My FRIENDS</h3>
                     {friends.map(friends=>{
                         return(

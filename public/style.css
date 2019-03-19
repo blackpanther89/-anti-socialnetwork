@@ -1,19 +1,12 @@
 * {
-
-
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
+
 .header {
     background-color: black;
-
     border-bottom: solid purple 2px;
-
-
-
-
 }
 
 body {
@@ -31,25 +24,23 @@ h1 {
     margin-top: 0px;
     font-size: 20px;
     text-align: center;
-
 }
 
 h2 {
     text-align: center;
     color: white;
     padding-top: 20px;
-
-
 }
-h3{
-color: white;
-float: left;
-padding-left: 50px;
+
+h3 {
+    color: white;
+    float: left;
+    padding-left: 50px;
 }
+
 /* h2:hover{
     color: purple;
 } */
-
 .register-box {
     position: absolute;
     top: 60%;
@@ -63,7 +54,6 @@ padding-left: 50px;
     text-align: center;
     border-radius: 20px;
     border: solid 2px purple;
-
 }
 
 .register-box:hover {
@@ -71,7 +61,8 @@ padding-left: 50px;
     height: 430px;
     /* transition: 1s; */
 }
-.register-button{
+
+.register-button {
     position: absolute;
     top: 63%;
     left: 50%;
@@ -83,22 +74,22 @@ padding-left: 50px;
     color: white;
     border-radius: 20px;
 }
-.register-button:hover{
+
+.register-button:hover {
     width: 120px;
     height: 35px;
     color: purple;
-
 }
 
-
-.login-link{
+.login-link {
     top: 20%;
     color: white;
 }
-.login-link:hover{
-color: purple;
 
+.login-link:hover {
+    color: purple;
 }
+
 .login-box {
     position: absolute;
     top: 45%;
@@ -108,22 +99,19 @@ color: purple;
     height: 200px;
     box-sizing: content-box;
     /* background-color: black; */
-        background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     text-align: center;
     border-radius: 20px;
     border: solid 2px purple;
-
-
-
-
 }
+
 .login-box:hover {
     width: 430px;
     height: 230px;
     /* transition: 2s; */
 }
 
-.login-button{
+.login-button {
     position: absolute;
     top: 64%;
     left: 50%;
@@ -135,14 +123,14 @@ color: purple;
     border-radius: 50px;
     color: white;
 }
-.login-button:hover{
+
+.login-button:hover {
     width: 130px;
     height: 35px;
-        color: purple;
-
+    color: purple;
 }
 
-.profile-box{
+.profile-box {
     position: absolute;
     top: 55%;
     left: 50%;
@@ -150,34 +138,31 @@ color: purple;
     width: 400px;
     height: 470px;
     box-sizing: content-box;
-        background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     /* background-color: rgba(0, 0, 0, 0.5); */
     text-align: center;
     border-radius: 20px;
     border: solid 2px purple;
-
 }
 
-.welcome-profile-text{
-    margin-top:-5px;
-
+.welcome-profile-text {
+    margin-top: -5px;
     color: white;
 }
-.welcome-profile-text-box{
 
-}
-.bio{
-padding-top: 20px;
+.welcome-profile-text-box {}
 
+.bio {
+    padding-top: 20px;
 }
-textarea{
+
+textarea {
     margin-top: 30px;
 }
 
 /* .profilepic {
     margin top: 30px;
 } */
-
 .little-profile-pic {
     float: right;
     width: 60px;
@@ -187,19 +172,18 @@ textarea{
     border-radius: 85px;
 }
 
-.img-profile{
+.img-profile {
     width: 100px;
     height: 60px
 }
 
-
-.logo{
-
+.logo {
     border-radius: 85px;
     width: 60px;
     height: 60px;
 }
-.edit-button{
+
+.edit-button {
     position: absolute;
     top: 65%;
     left: 50%;
@@ -209,10 +193,10 @@ textarea{
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
     color: white;
-        border-radius: 50px;
-
+    border-radius: 50px;
 }
-.add-button{
+
+.add-button {
     position: absolute;
     top: 57%;
     left: 50%;
@@ -223,10 +207,9 @@ textarea{
     text-align: center;
     color: white;
     border-radius: 50px;
-
 }
 
-.save-button{
+.save-button {
     position: absolute;
     top: 95%;
     left: 50%;
@@ -237,7 +220,6 @@ textarea{
     text-align: center;
     color: white;
     border-radius: 50px;
-
 }
 
 /* button {
@@ -258,12 +240,8 @@ button:hover{
     height: 35px;
 
 } */
-
-
 .uploader-box {
-
     border: solid black;
-
     background-color: white;
     text-align: center;
     /* margin: auto; */
@@ -271,9 +249,10 @@ button:hover{
     width: 200px;
     height: 100px;
     color: white
-    /* opacity: 0.6; */
+        /* opacity: 0.6; */
 }
-.upload{
+
+.upload {
     color: white;
 }
 
@@ -283,7 +262,6 @@ button:hover{
     margin: auto;
     margin-top: 30px;
     display: block;
-
 }
 
 input {
@@ -292,7 +270,6 @@ input {
     margin: auto;
     display: block;
     border-radius: 5px;
-
 }
 
 input:hover,
@@ -303,11 +280,9 @@ input:focus {
     box-shadow: 0px 1px 0px purple, inset 0px 3px 6px purple;
 }
 
-
-
 p {
     color: white;
-    text-align: center;
+    margin: 10px;
 }
 
 /* textarea:hover{
@@ -351,45 +326,54 @@ p {
     width: 200px;
     height: 200px;
 }
-.friends_and_wannabes{
 
+.friends_and_wannabes {
     /* display: grid;
     grid-template-rows:  auto auto auto; */
-
-text-align: center;
+    text-align: center;
     width: 150px;
     height: 150px;
-    margin:20px;
-    grid-template-columns:  auto auto auto;
-
+    margin: 20px;
+    grid-template-columns: auto auto auto;
 }
 
-.my_friends{
+.my_friends {
     text-align: center;
     display: grid;
-    grid-template-columns:  auto auto auto;
+    grid-template-columns: auto auto auto;
     /* border: solid black; */
     /* width: 700px;
     height: 300px; */
     /* background-color: purple; */
-
 }
-.wannabes{}
-.friends{
-/* padding-left: 500%; */
-width: 150px;
-height: 150px;
-margin:30px;
-}
-.my_friends{
 
+.wannabes {}
 
-}
-/* .friendsB{
-padding-left: 20px;
-
-}
-.wannabes{
+.friends {
+    /* padding-left: 500%; */
     width: 150px;
     height: 150px;
-} */ */
+    margin: 30px;
+}
+
+.my_friends {}
+
+.Online {
+    width: 200px;
+    height:210px;
+    border: solid black 2px;
+    margin-top: 40px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.onlineUsers_img {
+    width: 130px;
+    height: 130px;
+    margin: 20px;
+    border: purple solid 2px;
+}
+.onlineUsers_img:hover{
+    width: 150px;
+    height: 150px;
+}

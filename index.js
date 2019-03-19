@@ -299,5 +299,7 @@ io.on('connection',socket=>{
         console.log('Disconnection!', socket.id);
     });
 
-
+    socket.on('newChatMessage', data=>{
+        console.log('data in newChatMessage', data);
+    });
 });

@@ -9,7 +9,7 @@ export class OnlineUsers extends React.Component {
     }
     render (){
         const {onlineUsers} =this.props;
-        console.log('this.props', this.props);
+        console.log('this.props in onlineUsers', this.props);
 
         if(!onlineUsers){
             return null;
@@ -18,9 +18,9 @@ export class OnlineUsers extends React.Component {
             <div>
                 {onlineUsers.map(onlineUsers=>{
                     return(
-                        <div key={onlineUsers.id}>
-                            <img  src= {onlineUsers.image_url}/>
-                            {onlineUsers.firstname} {onlineUsers.lastname}
+                        <div className="Online" key={onlineUsers.id}>
+                            <img className="onlineUsers_img" src= {onlineUsers.image_url}/>
+                            <p>{onlineUsers.firstname} {onlineUsers.lastname}</p>
                         </div>
                     );
                 })}
@@ -29,16 +29,16 @@ export class OnlineUsers extends React.Component {
         return(
             <div>
                 <h1>Online Users</h1>
+                {list}
             </div>
         );
     }
 }
 
 const mapStateToProps = state=> {
-    console.log('state eeeee', state);
+    console.log('state buuuuuu', state);
     return {
-        state
-
+        onlineUsers: state.onlineUsers
     };
 };
 export default connect (mapStateToProps)(OnlineUsers);
