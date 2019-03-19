@@ -48,16 +48,16 @@ export default function reducer(state = {}, action){
         return state;
     }
 
-    if (action.type== "USER_LEFT"){
-        state={
-            ...state,
-            onlineusers:state.onlineusers.filter(onlineusers=>{
-                if (action.id != onlineusers.id){
-                    return state;
-                }
-            })
-        };
-    }
+    // if (action.type== "USER_LEFT"){
+    //     state={
+    //         ...state,
+    //         onlineusers:state.onlineusers.filter(onlineusers=>{
+    //             if (action.id != onlineusers.id){
+    //                 return state;
+    //             }
+    //         })
+    //     };
+    // }
 
     console.log("State in Reducer", state);
     return state;

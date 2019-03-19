@@ -157,7 +157,8 @@ h3 {
 }
 
 textarea {
-    margin-top: 30px;
+    margin-top: 1px;
+    border-radius: 20px;
 }
 
 /* .profilepic {
@@ -185,10 +186,10 @@ textarea {
 
 .edit-button {
     position: absolute;
-    top: 65%;
+    top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px;
+    width: 150px;
     height: 30px;
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -211,10 +212,10 @@ textarea {
 
 .save-button {
     position: absolute;
-    top: 95%;
+    top: 94%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px;
+    width: 100px;
     height: 30px;
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -350,7 +351,6 @@ p {
 .wannabes {}
 
 .friends {
-    /* padding-left: 500%; */
     width: 150px;
     height: 150px;
     margin: 30px;

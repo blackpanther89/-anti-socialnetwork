@@ -297,6 +297,10 @@ io.on('connection',socket=>{
     socket.on('disconnect',()=>{
         delete onlineUsers[socket.id];
         console.log('Disconnection!', socket.id);
+        const reallyGone=  !Object.values(onlineUsers).includes(userId);
+        if (reallyGone){
+            socket.broadcast.emit('userLeft', userId);
+        }
     });
 
     socket.on('newChatMessage', data=>{
