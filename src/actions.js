@@ -63,3 +63,21 @@ export function userLeft (data){
     };
 
 }
+//==========================CHAT=============================================//
+
+export function getMessages (data){
+    console.log('data in getMessages', data);
+    return{
+        type: 'GET_MESSAGES',
+        messages: data
+    };
+
+}
+export function newChatMessage (data){
+    console.log('data in newChatMessage', data);
+    return{
+        type: 'NEW_CHAT_MESSAGE',
+        messages: data
+    };
+
+}

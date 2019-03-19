@@ -261,6 +261,7 @@ server.listen(8080, function() {
 });
 //============================================================================//
 const onlineUsers={};
+
 // const userJoined={};
 // //when someone connnectes to the site this function will run
 
@@ -302,8 +303,23 @@ io.on('connection',socket=>{
             socket.broadcast.emit('userLeft', userId);
         }
     });
+    //========================================================================//
 
-    socket.on('newChatMessage', data=>{
-        console.log('data in newChatMessage', data);
+    db.getChatMessages().then(({rows})=>{
+        console.log('rows in getMessages', rows);
+        socket.emit('getMessages', rows);
     });
+
+
+    socket.on('newChatMessage',data =>{
+        console.log('data in newChatMessage',data);
+        db.getChatMessages().then(({data})=>{
+            io.sockets.emit('newChatMessage', data);
+        });
+    });
+
+
+
+
+
 });

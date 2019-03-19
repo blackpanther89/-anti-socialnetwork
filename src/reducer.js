@@ -32,7 +32,7 @@ export default function reducer(state = {}, action){
     }
 
 
-    //=============================SOCKET.IO======================================//
+    //=============================SOCKET.IO==================================//
 
     if (action.type== 'ONLINE_USERS'){
         return Object.assign({}, state,{
@@ -58,6 +58,21 @@ export default function reducer(state = {}, action){
             })
         };
     }
+    //======================CHAT==============================================//
+    if (action.type== 'GET_MESSAGES'){
+        return Object.assign({}, state,{
+            messages: action.messages
+        });
+
+    }
+    if (action.type== 'NEW_CHAT_MESSAGE'){
+        state={
+            ...state,
+            messages:[...state.messages, action.messages]
+        };
+        return state;
+    }
+
 
     console.log("State in Reducer", state);
     return state;

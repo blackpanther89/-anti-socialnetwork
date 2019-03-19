@@ -1,5 +1,7 @@
 import * as io from 'socket.io-client';
 import {onlineUsers, userJoined, userLeft} from './actions';
+import{ getMessages, newChatMessage} from './actions';
+
 let socket;
 
 export function getSocket(store) {
@@ -24,7 +26,13 @@ export function getSocket(store) {
                 userLeft(data)
             );
         });
+        socket.on('getMessages', data=>{
+            store.dispatch(getMessages(data));
+        });
     }
+    socket.on('newChatMessage', data=>{
+        store.dispatch(newChatMessage(data));
+    });
 
     return socket;
 }
