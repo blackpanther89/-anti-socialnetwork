@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import getSocket from "./socket";
+import {getSocket} from "./socket";
 
 export class Chat extends React.Component{
     constructor(props){
@@ -8,7 +8,7 @@ export class Chat extends React.Component{
     }
     handleKeyDown(e) {
         if (e.which === 13){
-            console.log('enter was pressed!!!!!!');
+            console.log('enter was pressed!!!!!!',  e.target.value);
             getSocket().emit('newChatMessage', e.target.value);
 
         }
@@ -29,6 +29,8 @@ export class Chat extends React.Component{
                     return(
                         <div className="messages" key={messages.id}>
                             <img className="newChatMessage_img" src={messages.image_url}/>
+                            {messages.firstname} {messages.lastname}
+                            {messages.messages} {messages.created_at}
                         </div>
                     );
                 })}

@@ -313,9 +313,25 @@ io.on('connection',socket=>{
 
     socket.on('newChatMessage',data =>{
         console.log('data in newChatMessage',data);
-        db.getChatMessages().then(({data})=>{
-            io.sockets.emit('newChatMessage', data);
+        db.getNewChatMessages(data, userId).then((results)=>{
+            console.log('results in getNewChatMessages', results);
+            db.getUserById(userId).then(({rows})=>{
+                console.log('rows in getUserById', rows);
+                const chatMessages= {
+                    messages: results.rows[0].messages,
+                    userId: results.rows[0].userId,
+                    created_at: results.rows[0].created_at,
+                    image_url: rows.rows[0].image_url,
+                    firstName: rows.rows[0].firstName,
+                    lastName: rows.rows[0].lastName
+
+
+                };
+            });
+            io.sockets.emit('newChatMessage', chatMessages);
         });
+
+
     });
 
 

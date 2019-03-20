@@ -72,9 +72,9 @@ module.exports.getUsersByIds= function getUsersByIds(arrayOfIds) {
 };
 
 module.exports.getChatMessages = function getChatMessages(){
-    return db.query(`SELECT  (users.id, users.firstName,  users.lastName,  users.image_url, messages, chat.userId, created_at ) FROM users JOIN chat ON users.id= userId ORDER BY chat.id DESC LIMIT 10`);
+    return db.query(`SELECT  users.id, users.firstName,  users.lastName,  users.image_url, messages, chat.userId, created_at  FROM users JOIN chat ON users.id= userId ORDER BY chat.id DESC LIMIT 10`);
 };
 
-module.exports.getNewChatMessages = function getNewChatMessages(messages, userId){
-    return db.query(`INSERT INTO chat (messages, userId) VALUES ($1, $2) RETURNING *` [messages, userId]);
+module.exports.getNewChatMessages = function getNewChatMessages(messages, userId, created_at){
+    return db.query(`INSERT INTO chat (messages, userId, created_at) VALUES ($1, $2, $3) RETURNING *`, [messages, userId, created_at]);
 };
