@@ -10,6 +10,7 @@ import Chat from './chat';
 
 
 
+
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -67,9 +68,17 @@ export default class App extends React.Component {
         return (
             <div>
                 <div className="header">
+                    <a href="/">
+                        <img  className="logo" src="/logo.jpg" alt="Social network logo" />
+                    </a>
+                    <a className=" friends-link" href="/friends">Friends</a>
+                    <a className=" online-link" href="/online">Online</a>
+                    <a className=" chat-link" href="/chat">Chat</a>
 
-                    <img  className="logo" src="/logo.jpg" alt="Social network logo" />
+
                     <h1> <img className="little-profile-pic" src={this.state.image}/>
+
+
 
                     </h1>
 

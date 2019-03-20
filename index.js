@@ -339,3 +339,9 @@ io.on('connection',socket=>{
 
 
 });
+//==========================================================================//
+// app.get('/logout', (req, res)=>{
+//
+//     req.session=null;
+//     res.redirect('/registration');
+// });

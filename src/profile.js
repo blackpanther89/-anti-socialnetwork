@@ -27,7 +27,10 @@ export default class Profile extends React.Component {
                     <div className="welcome-profile-text-box">
                         <h1 className="welcome-profile-text">  Hello, {this.props.firstName} how are you today?</h1>
                     </div>
+                    <br/>
     
+                    <br/>
+
                     <div className="bio">
                         <p> {this.props.bio}</p>
                     </div>

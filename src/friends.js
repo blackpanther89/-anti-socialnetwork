@@ -29,29 +29,30 @@ export class Friends extends React.Component {
             return null;
         }
         return(
-
-            <div className="friends_and_wannabes">
-                <h3>WANNABES FRIENDS</h3>
-                {wannabes.map(wannabes=>{
-                    return(
-                        <div className= "wannabes" key={wannabes.id} >
-                            <img className="friends" src= {wannabes.image_url}/>
-                            <p>{wannabes.firstname} {wannabes.lastname}</p>
-                            <button
-                                onClick ={()=>this.props.dispatch(acceptFriend(wannabes.id))}>
+            <div className="allfriends">
+                <h3 className="wannabetitle">WANNABES FRIENDS</h3>
+                <div className="friends_and_wannabes">
+                    {wannabes.map(wannabes=>{
+                        return(
+                            <div className= "wannabes" key={wannabes.id} >
+                                <img className="friends" src= {wannabes.image_url}/>
+                                <p>{wannabes.firstname} {wannabes.lastname}</p>
+                                <button
+                                    onClick ={()=>this.props.dispatch(acceptFriend(wannabes.id))}>
                     Accept Friend Request</button>
 
-                        </div>
+                            </div>
 
-                    );
-                })}
+                        );
+                    })}
+                </div>
 
                 <div className="my_friends">
 
-                    <h3> My FRIENDS</h3>
+                    <h3 className=""> My FRIENDS</h3>
                     {friends.map(friends=>{
                         return(
-                            <div className= "friends" key={friends.id} >
+                            <div className= "myfriends" key={friends.id} >
                                 <img  className="friends" src= {friends.image_url}/>
                                 <p>{friends.firstname} {friends.lastname}</p>
                                 <br/>
@@ -66,7 +67,6 @@ export class Friends extends React.Component {
 
 
                 </div>
-
             </div>
         );
 
