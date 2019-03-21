@@ -31,7 +31,7 @@ export default class OtherProfile extends React.Component {
 
             <div className= "others">
                 <div className="others-title">
-                    <h3>Other People Profile </h3>
+                    <h3 className="title-other-profile">Other People Profile </h3>
                 </div>
                 <br/>
                 {this.state.firstname}

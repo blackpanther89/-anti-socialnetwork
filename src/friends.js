@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {receiveFriendsWannabes} from './actions';
 import{unfriend, acceptFriend}from './actions';
-// import {Link} from 'react-router-dom';
+
+import Logout from './logout';
 
 
 export class Friends extends React.Component {
@@ -29,24 +30,8 @@ export class Friends extends React.Component {
             return null;
         }
         return(
+
             <div className="allfriends">
-                <h3 className="wannabetitle">WANNABES FRIENDS</h3>
-                <div className="friends_and_wannabes">
-                    {wannabes.map(wannabes=>{
-                        return(
-                            <div className= "wannabes" key={wannabes.id} >
-                                <img className="friends" src= {wannabes.image_url}/>
-                                <p>{wannabes.firstname} {wannabes.lastname}</p>
-                                <button
-                                    onClick ={()=>this.props.dispatch(acceptFriend(wannabes.id))}>
-                    Accept Friend Request</button>
-
-                            </div>
-
-                        );
-                    })}
-                </div>
-
                 <div className="my_friends">
 
                     <h3> MY FRIENDS</h3>
@@ -57,8 +42,8 @@ export class Friends extends React.Component {
                                 <p>{friends.firstname} {friends.lastname}</p>
                                 <br/>
 
-                                <button className="friendsB" onClick={()=>this.props.dispatch(unfriend(friends.id))}>
-                            END FRIENDSHIP </button>
+                                <button  onClick={()=>this.props.dispatch(unfriend(friends.id))}>
+                    END FRIENDSHIP </button>
 
                             </div>
 
@@ -67,6 +52,24 @@ export class Friends extends React.Component {
 
 
                 </div>
+                <h3 className="wannabetitle">WANNABE FRIENDS</h3>
+
+                <div className="friends_and_wannabes">
+                    {wannabes.map(wannabes=>{
+                        return(
+                            <div className= "wannabes" key={wannabes.id} >
+                                <img className="friends" src= {wannabes.image_url}/>
+                                <p>{wannabes.firstname} {wannabes.lastname}</p>
+                                <button className="friendsB"
+                                    onClick ={()=>this.props.dispatch(acceptFriend(wannabes.id))}>
+                    Accept Friend Request</button>
+
+                            </div>
+
+                        );
+                    })}
+                </div>
+
             </div>
         );
 

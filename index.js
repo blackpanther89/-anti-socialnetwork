@@ -303,11 +303,10 @@ io.on('connection',socket=>{
             socket.broadcast.emit('userLeft', userId);
         }
     });
-    //========================================================================//
 
     db.getChatMessages().then(({rows})=>{
         console.log('rows in getMessages', rows);
-        socket.emit('getMessages', rows);
+        socket.emit('getMessages', rows.reverse());
     });
 
 
@@ -337,8 +336,8 @@ io.on('connection',socket=>{
 
 });
 //==========================================================================//
-// app.get('/logout', (req, res)=>{
-//
-//     req.session=null;
-//     res.redirect('/registration');
-// });
+app.post('/logout', (req, res)=>{
+
+    req.session=null;
+    res.send({success: 'true'});
+});

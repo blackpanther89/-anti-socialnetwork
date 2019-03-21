@@ -37,6 +37,7 @@ h3 {
     color: white;
     font-family: 'Helvetica Neue', sans-serif;
     padding-top: 20px;
+    border-bottom: solid purple 2px;
 }
 
 .register-box {
@@ -60,10 +61,10 @@ h3 {
     /* transition: 1s; */
 }
 
-button.register-button {
+.register-button {
     position: absolute;
-    top: 80%;
-    left: 63%;
+    top: 75%;
+    left: 48%;
     transform: translate(-50%, -50%);
     width: 100px;
     height: 40px;
@@ -74,10 +75,12 @@ button.register-button {
 }
 
 .register-button:hover {
+
     color: purple;
 }
 
 .login-link {
+
     color: white;
     font-family: 'Helvetica Neue', sans-serif;
 }
@@ -106,10 +109,10 @@ button.register-button {
     /* transition: 2s; */
 }
 
-button.login-button {
+.login-button {
     position: absolute;
-    top: 84%;
-    left: 64%;
+    top: 74%;
+    left: 50%;
     transform: translate(-50%, -50%);
     width: 100px;
     height: 30px;
@@ -124,14 +127,14 @@ button.login-button {
     height: 35px;
     color: purple;
 }
+button.logout-button{
+position: absolute;
+top: -60px;
+height: 20px;
+width: 60px;
 
-button.logout-button {
-    position: absolute;
-    top: -85px;
-    right: -340px;
-    height: 20px;
-    width: 60px;
 }
+
 
 .profile-box {
     position: absolute;
@@ -192,10 +195,10 @@ textarea {
     height: 60px;
 }
 
-button.edit-button {
+.edit-button {
     position: absolute;
     top: 147%;
-    left: 61%;
+    left: 48%;
     transform: translate(-50%, -50%);
     width: 80px;
     height: 30px;
@@ -212,10 +215,10 @@ button.edit-button {
     color: purple;
 }
 
-button.add-button {
+.add-button {
     position: absolute;
-    top: 140%;
-    left: 55%;
+    top: 130%;
+    left: 40%;
     width: 60px;
     height: 35px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -223,9 +226,9 @@ button.add-button {
     border-radius: 5px;
 }
 
-button.save-button {
+.save-button {
     position: absolute;
-    top: 167%;
+    top: 153%;
     width: 100px;
     height: 30px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -241,14 +244,13 @@ button.save-button {
 
 button {
     position: absolute;
-    width: 105px;
+    width: 100px;
     height: 30px;
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
     color: purple;
     border-radius: 50px;
-    margin-left: -50px;
-    margin-top: 10px;
+    margin: 10px;
 }
 
 button:hover {
@@ -320,7 +322,7 @@ p {
     transform: translate(-50%, -50%);
     width: 400px;
     height: 450px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.9);
     text-align: center;
     border-radius: 20px;
     border: solid 3px purple;
@@ -379,64 +381,47 @@ p {
     color: white;
     height: 10px;
 }
+.allfriends{
 
-.allfriends {
     margin: 20px;
+    display: flex;
 }
-
 .friends {
+
     width: 130px;
     height: 130px;
     margin: 10px;
-    border: 3px solid purple;
 }
-
-.wannabes {
-    margin: 50px;
-    width: 244px;
-    height: 255px;
-    border: solid black 2px;
-    margin-top: 40px;
-    display: inline-block;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.wannabes:hover {
-    height: 250px;
-    width: 254px;
-}
-
-div.myfriends {
-    display: inline-block;
-    align-items: center;
-}
-
-.myfriends {
-    text-align: center;
-    margin: 50px;
-    width: 250px;
-    height: 260px;
-    border: solid black 2px;
-    margin-top: 40px;
-    margin-left: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-.myfriends:hover {
-    height: 260px;
-    width: 260px;
-}
-
-
-
-.Online {
+/* .wannabes {
+    margin: 20px;
     width: 200px;
     height: 210px;
     border: solid black 2px;
     margin-top: 40px;
     display: inline-block;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
+} */
+
+
+/* .myfriends{
+    text-align: center;
+    margin: 10px;
+    /* width: 200px;
+    height: 210px;
+    border: solid black 2px; */
+/* margin-top: 40px;
+    margin-left: 20px;
+    align-items: center; */
+/* background-color: rgba(0, 0, 0, 0.4); */
+}
+
+*/ .Online {
+    width: 200px;
+    height: 210px;
+    border: solid black 2px;
+    margin-top: 40px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .onlineUsers_img {

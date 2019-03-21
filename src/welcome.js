@@ -16,7 +16,7 @@ export default class Welcome extends React.Component {
                 <div className="header">
                     <img  className="logo" src="./logo.jpg" />
                 </div>
-                <h1>WELCOME </h1>
+                <h1>W3LCOME </h1>
 
                 <HashRouter>
                     <div>

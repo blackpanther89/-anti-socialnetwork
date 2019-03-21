@@ -26,13 +26,18 @@ export class Chat extends React.Component{
             return null;
         }
         const listMessages = (
-            <div>
+            <div className="chat">
                 {messages.map(messages=>{
                     return(
                         <div className="messages" key={messages.id}>
+                            <div className="sender">
+                                {messages.firstname} {messages.lastname}  {messages.created_at}
+                            </div>
                             <img className="newChatMessage_img" src={messages.image_url}/>
-                            {messages.firstname} {messages.lastname}
-                            {messages.messages} {messages.created_at}
+                            <div className= "send-message">
+                                {messages.messages}
+                            </div>
+
                         </div>
                     );
                 })}
@@ -43,7 +48,7 @@ export class Chat extends React.Component{
             <div>
                 <h1> W3LCM TO THE CHAT ROOM</h1>
                 <div id="chat-messages" ref={elem => (this.elem = elem)}>
-                    <textarea placeholder="" className="textarea-chat" onKeyDown = {this.handleKeyDown}/>
+                    <textarea placeholder="Type a message" className="textarea-chat" onKeyDown = {this.handleKeyDown}/>
                 </div>
 
                 {listMessages}
