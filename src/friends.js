@@ -49,7 +49,7 @@ export class Friends extends React.Component {
 
                 <div className="my_friends">
 
-                    <h3 className=""> My FRIENDS</h3>
+                    <h3> MY FRIENDS</h3>
                     {friends.map(friends=>{
                         return(
                             <div className= "myfriends" key={friends.id} >

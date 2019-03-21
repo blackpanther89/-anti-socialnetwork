@@ -139,7 +139,7 @@ function requireLoggedInUser(req, res, next) {
 app.get('/user', requireLoggedInUser, (req, res) => {
     console.log('hello');
     db.getUserById(req.session.userId).then(data => {
-        console.log('rows in getUserById: ', data);
+
 
         const user = data.rows.pop();
         console.log("user", user);
@@ -319,22 +319,19 @@ io.on('connection',socket=>{
                 console.log('rows in getUserById', rows);
                 const chatMessages= {
                     messages: results.rows[0].messages,
-                    userId: results.rows[0].userId,
+                    userid: results.rows[0].userid,
                     created_at: results.rows[0].created_at,
-                    image_url: rows.rows[0].image_url,
-                    firstName: rows.rows[0].firstName,
-                    lastName: rows.rows[0].lastName
+                    image_url: rows[0].image_url,
+                    firstname: rows[0].firstname,
+                    lastname: rows[0].lastname
 
 
                 };
+                console.log('chatMessages', chatMessages);
+                io.sockets.emit('newChatMessage', chatMessages);
             });
-            io.sockets.emit('newChatMessage', chatMessages);
         });
-
-
     });
-
-
 
 
 

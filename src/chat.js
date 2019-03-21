@@ -10,6 +10,8 @@ export class Chat extends React.Component{
         if (e.which === 13){
             console.log('enter was pressed!!!!!!',  e.target.value);
             getSocket().emit('newChatMessage', e.target.value);
+            e.target.value="";
+
 
         }
     }
@@ -39,9 +41,9 @@ export class Chat extends React.Component{
         console.log('listMessages', listMessages);
         return(
             <div>
-                <h1> CHAT ROOM</h1>
+                <h1> W3LCM TO THE CHAT ROOM</h1>
                 <div id="chat-messages" ref={elem => (this.elem = elem)}>
-                    <textarea onKeyDown = {this.handleKeyDown}/>
+                    <textarea placeholder="" className="textarea-chat" onKeyDown = {this.handleKeyDown}/>
                 </div>
 
                 {listMessages}
