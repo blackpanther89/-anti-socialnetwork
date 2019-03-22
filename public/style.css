@@ -42,7 +42,7 @@ h3 {
 .register-box {
     font-family: 'Helvetica Neue', sans-serif;
     position: absolute;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
@@ -51,7 +51,7 @@ h3 {
     background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
     border-radius: 20px;
-    border: solid 2px purple;
+    border: solid 3px purple;
 }
 
 .register-box:hover {
@@ -62,7 +62,7 @@ h3 {
 
 button.register-button {
     position: absolute;
-    top: 80%;
+    top: 75%;
     left: 63%;
     transform: translate(-50%, -50%);
     width: 100px;
@@ -78,6 +78,9 @@ button.register-button {
 }
 
 .login-link {
+
+
+    margin-bottom: 5px;
     color: white;
     font-family: 'Helvetica Neue', sans-serif;
 }
@@ -97,7 +100,7 @@ button.register-button {
     background-color: rgba(0, 0, 0, 0.6);
     text-align: center;
     border-radius: 20px;
-    border: solid 2px purple;
+    border: solid 3px purple;
 }
 
 .login-box:hover {
@@ -108,7 +111,7 @@ button.register-button {
 
 button.login-button {
     position: absolute;
-    top: 84%;
+    top: 78%;
     left: 64%;
     transform: translate(-50%, -50%);
     width: 100px;
@@ -225,7 +228,7 @@ button.add-button {
 
 button.save-button {
     position: absolute;
-    top: 167%;
+    top: 154%;
     width: 100px;
     height: 30px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -268,13 +271,11 @@ button:hover {
     height: 50px;
     color: white;
     border-radius: 20px;
-    /* opacity: 0.6; */
+
 }
 
-/* .upload {
 
-    color: black;
-} */
+
 .default {
     width: 150px;
     height: 150px;
@@ -482,6 +483,37 @@ div.myfriends {
     height: 262px;
     border-radius: 20px;
     border: purple solid 5px;
+}
+.flashit{
+    font-size: 25px;
+    color:darkviolet;
+	-webkit-animation: flash linear 1s infinite;
+	animation: flash linear 1s infinite;
+}
+@-webkit-keyframes flash {
+	0% { opacity: 1; }
+	50% { opacity: .1; }
+	100% { opacity: 1; }
+}
+@keyframes flash {
+	0% { opacity: 1; }
+	50% { opacity: .1; }
+	100% { opacity: 1; }
+}
+/* Pulse class and keyframe animation */
+.pulseit{
+	-webkit-animation: pulse linear .5s infinite;
+	animation: pulse linear .5s infinite;
+}
+@-webkit-keyframes pulse {
+	0% { width:200px; }
+	50% { width:340px; }
+	100% { width:200px; }
+}
+@keyframes pulse {
+	0% { width:200px; }
+	50% { width:340px; }
+	100% { width:200px; }
 }
 
 .sender {

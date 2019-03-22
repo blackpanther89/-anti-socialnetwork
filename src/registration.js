@@ -33,7 +33,7 @@ export default class Registration extends React.Component {
     render() {
         return (
             <div className= "register-box">
-                <h2> REGISTER</h2>
+                <h2 className="flashit"> REGISTER</h2>
                 {this.state.error && <div className="error">Oops!</div>}
                 <br />
                 <br />
@@ -66,7 +66,7 @@ export default class Registration extends React.Component {
                 <br />
                 <br/>
                 <br />
-                <br/>
+
                 <br />
                 <br/>
                 <Link className="login-link" to="/login">Click here to Log in!</Link>

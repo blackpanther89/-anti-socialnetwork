@@ -46,9 +46,9 @@ export class Chat extends React.Component{
         console.log('listMessages', listMessages);
         return(
             <div>
-                <h1> W3LCM TO THE CHAT ROOM</h1>
+                <h1 className="flashit"> W3LCM TO THE CHAT ROOM</h1>
                 <div id="chat-messages" ref={elem => (this.elem = elem)}>
-                    <textarea placeholder="Type a message" className="textarea-chat" onKeyDown = {this.handleKeyDown}/>
+                    <textarea placeholder="Type a message ⌨️" className="textarea-chat" onKeyDown = {this.handleKeyDown}/>
                 </div>
 
                 {listMessages}
