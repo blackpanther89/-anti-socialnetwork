@@ -34,7 +34,7 @@ export default class Registration extends React.Component {
         return (
             <div className= "register-box">
                 <h2 className="flashit"> REGISTER</h2>
-                {this.state.error && <div className="error">Oops!</div>}
+                {this.state.error && <div className="error">Something went wrong!</div>}
                 <br />
                 <br />
                 <input

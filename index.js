@@ -76,13 +76,13 @@ app.get('/welcome', function(req, res) {
 //============================================================================//
 
 app.post('/registration', (req, res) => {
-    console.log('req.body:', req.body);
+    // console.log('req.body:', req.body);
     bcrypt.hashPassword(req.body.password).then(hash => {
     // console.log('hash:', hash);
         db
             .register(req.body.firstName, req.body.lastName, req.body.email, hash)
             .then(results => {
-                console.log('results in register', results);
+                // console.log('results in register', results);
 
                 req.session.firstName = req.body.firstName;
                 req.session.lastName = req.body.lastName;
@@ -101,16 +101,16 @@ app.post('/registration', (req, res) => {
 });
 //============================================================================//
 app.post('/login', (req, res) => {
-    console.log('req.body', req.body);
+    // console.log('req.body', req.body);
 
     db.login(req.body.email).then(results => {
-        console.log('results in log in', results );
+        // console.log('results in log in', results );
         bcrypt
             .checkPassword(req.body.password, results.rows[0].password)
             .then(match => {
                 if (match) {
                     req.session.userId = results.rows[0].id;
-                    console.log(req.session.userId);
+                    // console.log(req.session.userId);
                     res.json({success: true});
                 } else {
                     res.json({error: true});
@@ -128,7 +128,7 @@ app.post('/login', (req, res) => {
 });
 //===========================================================================//
 function requireLoggedInUser(req, res, next) {
-    console.log('req.session',req.session);
+    // console.log('req.session',req.session);
     if (!req.session.userId) {
         res.sendStatus(403);
     } else {
@@ -137,16 +137,16 @@ function requireLoggedInUser(req, res, next) {
 }
 //============================================================================//
 app.get('/user', requireLoggedInUser, (req, res) => {
-    console.log('hello');
+    // console.log('hello');
     db.getUserById(req.session.userId).then(data => {
 
 
         const user = data.rows.pop();
-        console.log("user", user);
+        // console.log("user", user);
         if (!user.image_url) {
             user.image_url = './default.png';
         }
-        console.log('results', data.rows);
+        // console.log('results', data.rows);
         res.json(user);
     });
 });
@@ -169,7 +169,7 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 //============================================================================//
 app.get('/bio', (req, res) => {
     db.getBioById(req.session.userId).then(results=>{
-        console.log('results in setBio', results);
+        // console.log('results in setBio', results);
         res.json(results);
     }).catch(error => {
         console.log('error',error);
@@ -178,29 +178,29 @@ app.get('/bio', (req, res) => {
 });
 
 app.post('/bio',(req, res)=> {
-    console.log('req.body', req.body);
+    // console.log('req.body', req.body);
     db.setBio( req.body.bio,req.session.userId).then(results=>{
-        console.log('results', results);
+        // console.log('results', results);
         res.json(results.rows[0].bio);
     });
 });
 
 //============================================================================//
 app.get('/users/:id',( req, res)=>{
-    console.log('id', req.params.id);
+    // console.log('id', req.params.id);
     if(req.params.id == req.session.userId){
         res.json({match:true});
     }else{
 
         db.getUserById(req.params.id).then(data=>{
-            console.log("data in getsuserapi", data);
+            // console.log("data in getsuserapi", data);
             res.json(data.rows[0]);
         });
     }
 });
 //============================================================================//
 app.get('/get-initial-status/:otherUserId', (req, res)=>{
-    console.log('GET /get-initial-status running');
+    // console.log('GET /get-initial-status running');
     db.getInitialStatus(req.params.otherUserId, req.session.userId).then(data=>{
         res.json(data);
     });
@@ -210,13 +210,13 @@ app.get('/get-initial-status/:otherUserId', (req, res)=>{
 
 //============================================================================//
 app.post('/send-friend-request/:id',(req, res)=>{
-    console.log('/send-friend-request/:id eeeeeeeee', );
+    // console.log('/send-friend-request/:id eeeeeeeee', );
     const myId =  req.session.userId;
-    console.log('myid in sendFriendRequest', myId);
+    // console.log('myid in sendFriendRequest', myId);
     const otherUserId = req.params.id;
-    console.log('otherUserId in sendFriendRequest', otherUserId);
+    // console.log('otherUserId in sendFriendRequest', otherUserId);
     db.sendFriendRequest( myId , otherUserId).then(data=>{
-        console.log('data in sendFriendRequest', data);
+        // console.log('data in sendFriendRequest', data);
         res.json({success:true, data: data.rows[0]});
     });
 });
@@ -224,7 +224,7 @@ app.post('/accept-friend-request/:id',(req, res)=>{
     // console.log('/accept-friend-request');
     const myId =  req.session.userId;
     const otherUserId = req.params.id;
-    console.log('otherUserId in acceptFriendRequest', otherUserId);
+    // console.log('otherUserId in acceptFriendRequest', otherUserId);
     db.acceptFriendRequest(myId , otherUserId).then(data=>{
         res.json({success:true, data: data.rows[0]});
     });
@@ -244,7 +244,7 @@ app.get('/get-friends-and-wannabes',(req,res)=>{
     const myId= req.session.userId;
     // console.log('myId', myId);
     db.getFriendsAndWannabes(myId).then(data=>{
-        console.log('data in getFriendsAndWannabes', data);
+        // console.log('data in getFriendsAndWannabes', data);
         res.json({data});
     }).catch(error => {
         console.log('error',error);
@@ -266,7 +266,7 @@ const onlineUsers={};
 // //when someone connnectes to the site this function will run
 
 io.on('connection',socket=>{
-    console.log('New connection', socket.id);
+    // console.log('New connection', socket.id);
     const {userId} = socket.request.session;
     if (!userId){
         return socket.disconnect();
@@ -297,7 +297,7 @@ io.on('connection',socket=>{
 
     socket.on('disconnect',()=>{
         delete onlineUsers[socket.id];
-        console.log('Disconnection!', socket.id);
+        // console.log('Disconnection!', socket.id);
         const reallyGone=  !Object.values(onlineUsers).includes(userId);
         if (reallyGone){
             socket.broadcast.emit('userLeft', userId);
@@ -305,17 +305,17 @@ io.on('connection',socket=>{
     });
 
     db.getChatMessages().then(({rows})=>{
-        console.log('rows in getMessages', rows);
+        // console.log('rows in getMessages', rows);
         socket.emit('getMessages', rows.reverse());
     });
 
 
     socket.on('newChatMessage',data =>{
-        console.log('data in newChatMessage',data);
+        // console.log('data in newChatMessage',data);
         db.getNewChatMessages(data, userId).then((results)=>{
-            console.log('results in getNewChatMessages', results);
+            // console.log('results in getNewChatMessages', results);
             db.getUserById(userId).then(({rows})=>{
-                console.log('rows in getUserById', rows);
+                // console.log('rows in getUserById', rows);
                 const chatMessages= {
                     messages: results.rows[0].messages,
                     userid: results.rows[0].userid,
@@ -326,7 +326,7 @@ io.on('connection',socket=>{
 
 
                 };
-                console.log('chatMessages', chatMessages);
+                // console.log('chatMessages', chatMessages);
                 io.sockets.emit('newChatMessage', chatMessages);
             });
         });
